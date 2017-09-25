@@ -1,0 +1,821 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+
+
+
+/*
+
+	1.  Defaults
+	2.	Buttons
+	3.  Alerts
+	4.	Header
+	5.  Secondary Menu
+
+*/
+
+
+
+
+
+/************************************************
+
+1.  Defaults
+
+************************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700');
+
+body {
+	color: #000000;
+	background: #f8f8f8;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0 0 20px 0;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+}
+
+.margin-no-bottom {
+	margin-bottom: 0px;
+}
+
+.live-game {
+	color: red;
+	font-weight: bold;
+	font-size: .9em;
+}
+
+.red-text {
+	color: red;
+}
+
+
+
+
+/************************************************
+
+2.  Buttons
+
+************************************************/
+
+
+
+.button {
+	display: block;
+	border: 1px solid transparent;
+	padding: 8px 20px;
+	background: gray;
+	border-radius: 4px;
+	text-align: center;
+	color: #ffffff;
+	margin-bottom: 20px;
+	width: 100%;
+		&:hover {
+			text-decoration: none;
+		}
+}
+
+.button-default {
+	background: #FFCC00;
+	color: #000000;
+		&:hover {
+			color: #000000;
+			background: #e5b700;
+		}
+		&:active {
+			background: #cca300;
+		}
+}
+
+.button-danger {
+	background: #FF1A1A;
+	color: #FFFFFF;
+		&:hover {
+			color: #ffffff;
+			background: #e51717;
+		}
+		&:active {
+			background: #cc1414;
+		}
+}
+
+
+
+
+
+/************************************************
+
+3.  Alerts
+
+************************************************/
+
+.alert {
+	position: fixed;
+	z-index: 10;
+	margin: 0 15px;
+}
+
+.alert-success {
+	background: #85BF00;
+	color: white;
+	border: 0;
+}
+
+
+
+/************************************************
+
+3.  Animations
+
+************************************************/
+
+.red-pulse-border {
+    animation: red-border-pulse 3s infinite;
+}
+
+.red-pulse-background {
+    animation: red-background-pulse 3s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes red-border-pulse {
+    0%   {border-color: red;}
+    50%  {border-color: #cc0000;}
+    100% {border-color: red;}
+}
+
+/* Standard syntax */
+@keyframes red-border-pulse {
+    0%   {border-color:red;}
+    50%  {border-color: #cc0000;}
+    100% {border-color: red;}
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes red-background-pulse {
+    0%   {background: red; color: #fff;}
+    50%  {background: #cc0000; color: #fff;}
+    100% {border-color: red; color: #fff;}
+}
+
+/* Standard syntax */
+@keyframes red-background-pulse {
+    0%   {background: red; color: #fff;}
+    50%  {background: #cc0000; color: #fff;}
+    100% {background: red; color: #fff;}
+}
+
+
+
+
+
+/************************************************
+
+4.  Header
+
+************************************************/
+
+.st0 {
+	fill: #ffffff;
+}
+
+
+.navbar {
+  background: #e60000;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand {
+    color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: #3B3B3F;
+    color: #FFFFFF;
+}
+
+.navbar-brand a {
+	color: #fff;
+		&:hover {
+			color: #eee;
+		}
+}
+
+.navbar-brand svg {
+	height: 20px;
+}
+
+a.st0 {
+	color: #ffffff;
+}
+
+
+/* Mobile Dropdown Menu Link Color  */
+
+@media (max-width: 767px) {
+
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+		color: #fff;
+	}
+
+}
+
+
+
+
+
+/************************************************
+
+5.  Secondary Menu
+
+************************************************/
+
+.secondary-menu {
+	background: #FFF;
+	border-bottom: 1px solid #dddddd;
+	margin-bottom: 30px;
+	margin-top: -20px;
+	padding: 10px 0;
+	font-size: 14px;
+
+}
+
+
+
+
+
+
+
+/************************************************
+
+6.  Game Summary
+
+************************************************/
+
+.game-summary {
+	background: #fff;
+	border-bottom: 1px solid #ddd;
+	margin-top: -30px;
+	padding: 10px 0;
+	margin-bottom: 20px;
+}
+
+.the-summary {
+	text-align: center;
+	width: 100%;
+		.team-logo img {
+			height: 35px;
+			width: 35px;
+			margin-bottom: 5px;
+		}
+		.blank-image {
+			height: 35px;
+			width: 35px;
+			margin-bottom: 5px;
+		}
+		h4 {
+			margin-bottom: 0px;
+		}
+		.score {
+			font-size: 2em;
+			font-weight: bold;
+		}
+		.game-status {
+			font-weight: bold;
+			font-size: .85em;
+		}
+		.game-time {
+			font-weight: bold;
+			font-size: .75em;
+		}
+}
+
+
+
+
+
+
+
+
+.main-content {
+  background: #fff;
+  border: 1px solid #dddddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+
+
+.heading {
+	color: #000000;
+	font-weight: bold;
+	margin-left: -20px;
+	margin-right: -20px;
+	margin-top: -20px;
+	border-bottom: 1px solid #dddddd;
+	padding: 15px 20px;
+	text-transform: uppercase;
+}
+
+
+
+.content-box {
+	background: #FFFFFF;
+	border: 1px solid #dddddd;
+	box-shadow: 0px 2px 1px #eeeeee;
+	border-radius: 4px;
+	margin-bottom: 30px;
+	padding: 20px;
+		.medium-team-logo {
+			height: 50px;
+			width: 50px;
+			margin-right: 10px;
+		}
+		.title-year {
+			color: #999999;
+			margin-bottom: 0px;
+		}
+		.section-title {
+			background: #f8f8f8;
+			margin-left: -20px;
+			margin-right: -20px;
+			margin-bottom: 20px;
+			padding: 10px 15px;
+				h6 {
+					margin: 0;
+					padding: 0;
+					font-weight: bold;
+				}
+		}
+		.section-name {
+			color: #999999;
+			margin-bottom: 0px;
+		}
+		.date-listed {
+			color: #000000;
+			font-size: .85em;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+		.team-schedule-logo {
+			height: 30px;
+			width: 30px;
+		}
+		.tournament-title {
+			background: #f8f8f8;
+			color: #333333;
+			border-radius: 4px;
+			text-align: center;
+			padding: 5px;
+			font-size: .85em;
+			margin-top: 10px;
+		}
+		.button {
+			margin-bottom: 0;
+		}
+		
+		.standings-list {
+			padding: 0;
+			margin: 0 -20px;
+			border-top: 1px solid #dddddd;
+				li {
+					list-style: none;
+					padding: 10px 10px;
+					border-bottom: 1px solid #dddddd;
+				}
+				li:last-child {
+					margin-bottom: -20px;
+				}
+				.standings-logo {
+					height: 20px;
+					width: auto;
+					margin-right: 10px;
+				}
+		}
+		.small-heading {
+			padding: 10px;
+
+			margin: -20px -20px 0px -20px;
+		}
+}
+
+
+
+.team-list {
+	padding: 15px;
+	margin: 0 -20px;
+	border-bottom: 1px solid #dddddd;
+		li:hover {
+			cursor: pointer;
+		}
+		li:last-child {
+			margin-bottom: -20px;
+		}
+		a {
+			color: #000;
+		}
+		h4 {
+			
+		}
+}
+
+
+
+
+/*  Teams  */
+
+.list-teams {
+	margin: 0;
+	padding: 0;
+		a:hover {
+			text-decoration: none;
+		}
+		li {
+			background: #fff;
+		  	list-style: none;
+		  	text-align: center;
+		  	border: 1px solid #dddddd;
+		  	padding: 15px;
+		  	margin-bottom: 20px;
+		  	color: #999999;
+		  	border-radius: 4px;
+			  	&:hover {
+			  		border: 1px solid green;
+			  		cursor: pointer;
+			  	}
+			  	.img-box {
+			  		height: 50px;
+			  		width: 50px;
+			  		margin: 0 auto 20px auto;
+			  	}
+			    img {
+			      height: 50px;
+			      width: 50px;
+			      display: block;
+			      margin: 0 auto 10px auto;
+			    }
+			    h4 {
+			    	color: #000000;
+			    	margin-bottom: 5px;
+			    }
+			    p {
+			    	margin-bottom: 0;
+			    }
+		}
+}
+
+
+
+
+
+
+
+.team-profile {
+	background: #fff;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	box-shadow: 0px 2px 1px #eeeeee;
+	padding: 20px;
+	margin-bottom: 30px;
+		label {
+			color: #999999;
+			font-weight: normal;
+			font-size: 12px;
+		}
+		.image-box {
+			position: relative;
+			border: 1px solid #dddddd;
+			border-radius: 2px;
+			max-width: 100px;
+			max-height: 100px;
+			float: left;
+			padding: 10px;
+			min-height: 90px;
+			min-width: 90px;
+			background: #fff;
+			margin-right: 20px;
+			margin-bottom: 20px;
+				&:hover, &:active {
+					border: 1px solid green;
+				}
+		}
+		.team-logo-upload:after {
+  			font-family: 'Glyphicons Halflings';  
+  			content: "\e046";  
+  			max-height: 20px;
+  			max-width: 20px;
+  			position: absolute;
+  			right: 6px;
+  			bottom: 3px;
+  			color: #dddddd;
+		}
+		img {
+			height: 70px;
+			width: 70px;
+		}
+		h6 {
+			margin-bottom: 0px;
+			color: #999999;
+		}
+		p {
+			margin-bottom: 10px;
+		}
+		.section-title {
+			background: #f5f5f5;
+			padding: 5px 20px;
+			margin: 0 -20px 10px -20px;
+		}
+}
+
+
+@media (max-width: 767px) {
+
+
+	.nav-justified > li, .nav-tabs.nav-justified > li {
+	    width: 48%;
+	}
+
+	.nav-justified > li:first-child, .nav-tabs.nav-justified > li:first-child {
+	    float: left;
+	}
+
+	.nav-justified > li:last-child, .nav-tabs.nav-justified > li:last-child {
+	    float: right;
+	}
+
+	.nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
+	    margin-right: 0;
+	    border-radius: 4px 4px 0 0;
+	    margin-bottom: 0px;
+	    border-bottom: none;
+	    background: #f1f1f1;
+	    -webkit-box-shadow:  inset 0px -11px 0px -10px #ddd; 
+    	 -moz-box-shadow:  inset 0px -11px 0px -10px #ddd; 
+          box-shadow:  inset 0px -11px 0px -10px #ddd;
+          color: #999;
+          font-weight: bold; 
+	}
+
+	.nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a, .nav-tabs-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:focus {
+	    border: 1px solid #ddd;
+	    border-bottom: none !important;
+	    background: white;
+	    -webkit-box-shadow:  none;
+    	 -moz-box-shadow:  none;
+          box-shadow:  none;
+          color: #333;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.no-top-border-radius {
+	border-radius: 0px 0px 4px 4px;
+}
+
+.no-border-top {
+	border-top: none;
+}
+
+
+
+
+
+.has-possession {
+	height: 5px;
+	width: 5px;
+	background: #000;
+	border-radius: 50%;
+	margin: 0 auto;
+}
+
+.no-possession {
+	height: 5px;
+	width: 5px;
+	background: #FFF;
+	border-radius: 50%;
+	margin: 0 auto;
+}
+
+
+
+
+
+
+
+/**************************************
+Schedule List
+**************************************/
+
+.schedule-list {
+	padding: 0 20px;
+	margin: 0 -40px;
+		img {
+			height: 30px;
+			width: 30px;
+			margin-right: 10px;	
+		}
+		.team {
+			width: 100%;
+			display: block;
+			padding: 4px 0;
+				.date {
+					display: block;
+					font-size: .9em;
+					font-weight: bold;
+				}
+		}
+		li {
+			list-style: none;
+			border-bottom: 1px solid #ddd;
+				&:last-child {
+					margin-bottom: -20px;
+					border-radius: 0px 0px 4px 4px;
+				}
+				a {
+					display: block;
+					padding: 10px 15px;
+					color: #000;
+						&:hover {
+							text-decoration: none;
+							background: #f8f8f8;
+						}
+				}
+		}
+
+		.create-game {
+			background: #f8f8f8;
+			min-height: 45px;
+			display: block;
+			margin-top: 30px !important;
+				li {
+					background: #eeeeee;
+					padding: 20px 15px;
+				}
+				li:hover {
+					background: #dddddd;
+					text-decoration: none;
+				}
+				a:hover {
+					text-deocration: none;
+				}
+		}
+		.create-game:hover {
+			text-decoration: none;
+			color: #666666;
+		}
+
+	.game-list-status {
+		padding: 4px 0;
+		font-size: .9em;
+		font-weight: bold;
+	}
+			
+}
+
+
+
+
+
+
+
+/************************************************
+
+6.  Tables
+
+************************************************/
+
+.box-score {
+	background: #fff;
+	margin: 0 0 20px 0;
+	border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+	border: 1px solid #ddd;
+	box-shadow: 0px 2px 1px #eeeeee;
+		thead tr {
+			border-radius: 4px;
+   		   -moz-border-radius: 4px;
+           -webkit-border-radius: 4px;
+		}
+		img {
+			height: 25px;
+			width: auto;
+			margin-right: 5px;
+		}
+		th {
+			font-size: .8em;
+		}
+		> thead > tr > th {
+			border-bottom: 1px solid #dddddd;
+		}
+}
+
+
+
+label {
+			color: #999999;
+			font-weight: normal;
+			font-size: 12px;
+		}
+
+
+
+
+
+
+
+/************************************************
+
+4.  Home Page - Signed In
+
+************************************************/
+
+ul.home-events {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	align-content: flex-start;
+	justify-content: space-between;
+	flex-flow: row wrap;
+}
+
+.home-events li {
+	min-height: 20px;
+	box-shadow: 0px 1px 2px rgba(0,0,0,.18);
+	list-style: none;
+	background: #fff;
+	width: 23%;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+		a {
+			color: #000;
+				&:hover {
+					text-decoration: none;
+				}
+		}
+		.team {
+			padding: 2px 5px;
+		}
+		img {
+			height: 30px;
+			width: 30px;
+			margin-right: 10px;
+		}
+		.status {
+			background: #f2f2f2;
+			text-align: right;
+			font-size: .8em;
+			color: #000;
+			padding: 3px;
+		}
+		.score {
+			float: right;
+		}
+		&:hover {
+			background: #f8f8f8;
+		}
+		&:active {
+			background: #eeeeee;
+		}
+}
+
+@media screen and (max-width: 768px) {
+
+	.home-events li {
+		width: 100%;
+	}
+
+}
+
