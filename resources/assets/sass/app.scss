@@ -19,6 +19,7 @@
 	3.  Alerts
 	4.	Header
 	5.  Secondary Menu
+	6.  Home Page
 
 */
 
@@ -818,4 +819,94 @@ ul.home-events {
 	}
 
 }
+
+
+
+
+
+/************************************************
+
+6.  Home Page - Sports List
+
+************************************************/
+
+.home-sports-list {
+	background: #fff;
+	margin-bottom: 40px;
+	margin-left: -15px;
+	margin-right: -15px;
+
+		a {
+			display: block;
+			color: #000;
+		}
+		a:hover {
+			background: #f8f8f8;
+			color: #000;
+			text-decoration: none;
+		}
+
+		.game-status {
+			display: block;
+			background: transparent;
+			margin-top: -5px;
+			text-align: right;
+			color: red;
+			font-size: .8em;
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+
+}
+
+.item {
+	padding: 10px 15px;
+	border-bottom: 1px solid #eeeeee;
+	display: block;
+}
+
+.element {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	align-items: center;
+	padding: 7px 0;
+}
+
+.element:first-child {
+	padding-top: 0px;
+	padding-bottom: 5px;
+}
+
+.element:last-child {
+	padding-top: 5px;
+	padding-bottom: 0px;
+}
+
+.logo {
+	height: 35px;
+	width: 35px;
+	margin-right: 10px;
+		img {
+			height: 100%;
+			width: 100%;
+		}
+}
+
+.status {
+	flex: 1;
+	text-align: right;
+	justify-content: flex-end;
+}
+
+
+
+
+
+
+
+
+
+
+
 
