@@ -31657,7 +31657,7 @@ var Component = __webpack_require__(35)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/ianpolatka/code/Scoring-Application/resources/assets/js/components/Example.vue"
+Component.options.__file = "/Users/ianpolatka/code/scoring-application/resources/assets/js/components/Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -31668,9 +31668,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4f6b28a0", Component.options)
+    hotAPI.createRecord("data-v-1aa8f060", Component.options)
   } else {
-    hotAPI.reload("data-v-4f6b28a0", Component.options)
+    hotAPI.reload("data-v-1aa8f060", Component.options)
   }
 })()}
 
@@ -31755,7 +31755,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4f6b28a0", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-1aa8f060", module.exports)
   }
 }
 

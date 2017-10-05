@@ -20,6 +20,7 @@
 	4.	Header
 	5.  Secondary Menu
 	6.  Home Page
+	7.  Date Picker
 
 */
 
@@ -897,6 +898,48 @@ ul.home-events {
 	flex: 1;
 	text-align: right;
 	justify-content: flex-end;
+}
+
+
+
+
+
+
+
+/************************************************
+
+7.  Date Picker
+
+************************************************/
+
+.ui-datepicker {
+	font-family: inherit !important;
+	-moz-box-shadow:    0 0 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+   	box-shadow:         0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.ui-widget-header {
+    border: none !important;
+    background: none !important;
+    color: #000000;
+    font-weight: bold;
+}
+
+.ui-datepicker td a {
+    text-align: center !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border: none !important;
+    background: transparent !important;
+    font-weight: normal;
+    color: #666666 !important;
+}
+
+.ui-datepicker td a:active, .ui-datepicker td a:hover {
+    background: #e60000 !important;
+    color: #fff !important;
 }
 
 
