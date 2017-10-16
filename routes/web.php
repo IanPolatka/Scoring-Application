@@ -287,6 +287,8 @@ Route::get('/api/football/schedule/{year}/{team}/{teamlevel}', 'FootballControll
 Route::get('/api/football/schedule-summary/{year}/{team}', 'FootballController@apiteamschedulesummary');
 Route::get('/api/football/game/{id}', 'FootballController@apigame');
 Route::get('/api/football/todays-events/{team}', 'FootballController@todaysevents');
+Route::get('/api/football/standings/{year}/{team}', 'FootballController@districtstandings');
+Route::get('/api/football/record/{year}/{team}', 'FootballController@yearsummary');
 
 
 
