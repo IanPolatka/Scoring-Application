@@ -132,7 +132,7 @@ Route::get('/basketball-girls/{year}/{team}', 'BasketballgirlsController@teamsch
 Route::get('/basketball-girls/{year}', 'BasketballgirlsController@yearschedule');
 
 
-Route::get('/api/schedule/{year}/{team}', 'BasketballgirlsController@apiteamschedule');
+Route::get('/api/girls-basketball/schedule/{year}/{team}/{teamlevel}', 'BasketballgirlsController@apiteamschedule');
 
 
 
