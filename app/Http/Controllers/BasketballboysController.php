@@ -236,8 +236,10 @@ class BasketballboysController extends Controller
 
 
 
-	public function apiteamschedule($year, $team)
+	public function apiteamschedule($year, $team, $teamlevel)
 	{
+
+		// return $teamlevel;
 
 		$theteam = Team::where('school_name', '=', $team)->pluck('id');
 
@@ -246,6 +248,7 @@ class BasketballboysController extends Controller
 							->join('years', 'basketball_boys.year_id', '=', 'years.id')
 							->join('times', 'basketball_boys.time_id', '=', 'times.id')
 							->select(
+									'team_level',
 									'basketball_boys.id',
 									'basketball_boys.date',
 									'year',
@@ -253,6 +256,8 @@ class BasketballboysController extends Controller
 									'time',
 									'basketball_boys.tournament_title',
 									'away_team.school_name as away_team',
+									'away_team.mascot as away_team_mascot',
+									'away_team.logo as away_team_logo',
 									'basketball_boys.away_team_first_qrt_score',
 									'basketball_boys.away_team_second_qrt_score',
 									'basketball_boys.away_team_third_qrt_score',
@@ -260,6 +265,8 @@ class BasketballboysController extends Controller
 									'basketball_boys.away_team_overtime_score',
 									'basketball_boys.away_team_final_score',
 									'home_team.school_name as home_team',
+									'home_team.mascot as home_team_mascot',
+									'home_team.logo as home_team_logo',
 									'basketball_boys.home_team_first_qrt_score',
 									'basketball_boys.home_team_second_qrt_score',
 									'basketball_boys.home_team_third_qrt_score',
@@ -273,7 +280,12 @@ class BasketballboysController extends Controller
 									'basketball_boys.losing_team'
 								)
 							->where('year', '=', $year)
-							->where('away_team_id', '=', $theteam)->orWhere('home_team_id', '=', $theteam)
+							->where(function ($query) use ($theteam) {
+						        $query->where('away_team_id', '=' , $theteam)
+						            ->orWhere('home_team_id', '=', $theteam);
+						    })
+							->where('team_level', '=', $teamlevel)
+							->orderBy('date')
 					    	->get();
 
 		return $basketball;
