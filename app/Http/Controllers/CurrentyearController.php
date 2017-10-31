@@ -8,13 +8,15 @@ use App\CurrentYear;
 use App\Year;
 use Session;
 
+use DB;
+
 
 class CurrentyearController extends Controller
 {
 
 	public function __construct() 
 	{
-	  $this->middleware('auth');
+	  $this->middleware('auth', ['except' => ['showcurrentyear']]);
 	}
 
 	public function index()
@@ -55,6 +57,19 @@ class CurrentyearController extends Controller
 		Session::flash('success', 'The current year has been updated.');
 
 		return redirect('/current-year');
+
+	}
+
+
+
+	public function showcurrentyear()
+	{
+
+		$year = \DB::table('current_year')->pluck('year_id');
+
+		$showyear = Year::find($year);
+
+		return $showyear;
 
 	}
 

@@ -77,6 +77,8 @@ Route::get('/current-year/', 'CurrentyearController@index');
 Route::get('/current-year/edit', 'CurrentyearController@edit');
 Route::patch('/current-year', 'CurrentyearController@update');
 
+Route::get('/api/year/current-year', 'CurrentyearController@showcurrentyear');
+
 
 
 //  Baseball
