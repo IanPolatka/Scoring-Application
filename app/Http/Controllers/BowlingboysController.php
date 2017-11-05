@@ -199,4 +199,45 @@ class BowlingboysController extends Controller
 
     }
 
+
+
+    public function apiteamschedule($year, $team, $teamlevel)
+    {
+
+        $theteam = Team::where('school_name', '=', $team)->pluck('id');
+
+        $bowling = Bowlingboys::join('teams as home_team', 'bowling_boys.home_team_id', '=', 'home_team.id')
+                            ->join('teams as away_team', 'bowling_boys.away_team_id', '=', 'away_team.id')
+                            ->join('years', 'bowling_boys.year_id', '=', 'years.id')
+                            ->join('times', 'bowling_boys.time_id', '=', 'times.id')
+                            ->leftjoin('teams as winner', 'bowling_boys.winner', '=', 'winner.id')
+                            ->leftjoin('teams as loser', 'bowling_boys.loser', '=', 'loser.id')
+                            ->select(
+                                    'bowling_boys.id',
+                                    'bowling_boys.date',
+                                    'year',
+                                    'scrimmage',
+                                    'time',
+                                    'bowling_boys.tournament_title',
+                                    'away_team.school_name as away_team',
+                                    'away_team.logo as away_team_logo',
+                                    'home_team.school_name as home_team',
+                                    'home_team.logo as home_team_logo',
+                                    'bowling_boys.winner',
+                                    'bowling_boys.loser',
+                                    'bowling_boys.match_score'
+                                )
+                            ->where('year', '=', $year)
+                            ->where(function ($query) use ($theteam) {
+                                $query->where('away_team_id', '=' , $theteam)
+                                    ->orWhere('home_team_id', '=', $theteam);
+                            })
+                            ->where('team_level', '=', $teamlevel)
+                            ->orderBy('date')
+                            ->get();
+
+        return $bowling;
+
+    }
+
 }

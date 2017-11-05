@@ -153,6 +153,8 @@ Route::delete('/bowling-boys/{bowlingboys}', 'BowlingboysController@delete');
 Route::get('/bowling-boys/{year}/{team}', 'BowlingboysController@teamschedule');
 Route::get('/bowling-boys/{year}', 'BowlingboysController@yearschedule');
 
+Route::get('/api/boys-bowling/schedule/{year}/{team}/{teamlevel}', 'BowlingboysController@apiteamschedule');
+
 
 
 //  Bowling Girls
