@@ -37,6 +37,15 @@
                         </div><!--  Form  Group  -->
 
                         <div class="form-group">
+                            <label for="team_level">Team Level</label>
+                            <select name="team_level" id="team_level" class="form-control">
+                                <option value="1">Varsity</option>
+                                <option value="2">Junior Varsity</option>
+                                <option value="3">Freshman</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                           <label for="date">Date</label>
                           <input type="text" class="form-control" id="datepicker" name="date">
                         </div>
@@ -110,7 +119,7 @@
                         </div><!--  Form  Group  -->
 
                         <div class="form-group">
-                          <button type="submit" class="btn btn-primary">Create girls Tennis Match</button>
+                          <button type="submit" class="btn btn-primary">Create Bowling Match</button>
                         </div>
                     
                     </form>
