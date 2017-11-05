@@ -172,6 +172,8 @@ Route::delete('/bowling-girls/{bowlinggirls}', 'BowlinggirlsController@delete');
 Route::get('/bowling-girls/{year}/{team}', 'BowlinggirlsController@teamschedule');
 Route::get('/bowling-girls/{year}', 'BowlinggirlsController@yearschedule');
 
+Route::get('/api/girls-bowling/schedule/{year}/{team}/{teamlevel}', 'BowlinggirlsController@apiteamschedule');
+
 
 
 //  Cross Country
