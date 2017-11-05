@@ -210,8 +210,8 @@ class BowlingboysController extends Controller
                             ->join('teams as away_team', 'bowling_boys.away_team_id', '=', 'away_team.id')
                             ->join('years', 'bowling_boys.year_id', '=', 'years.id')
                             ->join('times', 'bowling_boys.time_id', '=', 'times.id')
-                            ->leftjoin('teams as winner', 'bowling_boys.winner', '=', 'winner.id')
-                            ->leftjoin('teams as loser', 'bowling_boys.loser', '=', 'loser.id')
+                            ->leftjoin('teams as winning', 'bowling_boys.winner', '=', 'winning.id')
+                            ->leftjoin('teams as losing', 'bowling_boys.loser', '=', 'losing.id')
                             ->select(
                                     'bowling_boys.id',
                                     'bowling_boys.date',
@@ -223,8 +223,8 @@ class BowlingboysController extends Controller
                                     'away_team.logo as away_team_logo',
                                     'home_team.school_name as home_team',
                                     'home_team.logo as home_team_logo',
-                                    'bowling_boys.winner',
-                                    'bowling_boys.loser',
+                                    'winning.school_name as winner_team',
+                                    'losing.school_name as losing_team',
                                     'bowling_boys.match_score'
                                 )
                             ->where('year', '=', $year)
