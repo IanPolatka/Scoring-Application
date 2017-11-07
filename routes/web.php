@@ -411,6 +411,8 @@ Route::delete('/wrestling/{wrestling}', 'WrestlingController@delete');
 Route::get('/wrestling/{year}/{team}', 'WrestlingController@teamschedule');
 Route::get('/wrestling/{year}', 'WrestlingController@yearschedule');
 
+Route::get('/api/wrestling/schedule/{year}/{team}/{teamlevel}', 'WrestlingController@apiteamschedule');
+
 
 
 //  Volleyball

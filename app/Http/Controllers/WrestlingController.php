@@ -196,4 +196,31 @@ class WrestlingController extends Controller
 
     }
 
+
+
+    public function apiteamschedule($year, $team, $teamlevel)
+    {
+
+        $theteam = Team::where('school_name', '=', $team)->pluck('id');
+
+        $wrestling = Wrestling::join('years', 'wrestling.year_id', '=', 'years.id')
+                                 ->join('times', 'wrestling.time_id', '=', 'times.id')
+                                 ->select(
+                                    'wrestling.id',
+                                    'years.year',
+                                    'date',
+                                    'tournament_title',
+                                    'meet_location',
+                                    'times.time',
+                                    'result',
+                                )
+                                ->where('year', '=', $year)
+                                ->where('team_id', '=', $theteam)
+                                ->where('team_level', '=', $teamlevel)
+                                ->get();
+
+        return $wrestling;
+
+    }
+
 }
