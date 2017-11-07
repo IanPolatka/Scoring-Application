@@ -15,6 +15,11 @@ use App\Time;
 class WrestlingController extends Controller
 {
 
+    public function __construct() 
+    {
+      $this->middleware('auth', ['only' => [ 'create', 'edit', 'delete' ]]);
+    }
+
 	public function index()
     {
 
@@ -210,9 +215,8 @@ class WrestlingController extends Controller
                                     'years.year',
                                     'date',
                                     'tournament_title',
-                                    'meet_location',
                                     'times.time',
-                                    'result',
+                                    'result'
                                 )
                                 ->where('year', '=', $year)
                                 ->where('team_id', '=', $theteam)
