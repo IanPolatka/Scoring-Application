@@ -197,4 +197,33 @@ class SwimmingController extends Controller
 
     }
 
+
+
+    public function apiteamschedule($year, $team, $teamlevel)
+    {
+
+        $theteam = Team::where('school_name', '=', $team)->pluck('id');
+
+        $swimming = Swimming::join('teams as schedule_for','swimming.team_id', '=', 'schedule_for.id')
+                                    ->join('years', 'swimming.year_id', '=', 'years.id')
+                                    ->join('times', 'swimming.time_id', '=', 'times.id')
+                                    ->select(
+                                        'swimming.id',
+                                        'schedule_for.school_name as schedule_for',
+                                        'years.year',
+                                        'date',
+                                        'tournament_title',
+                                        'times.time',
+                                        'boys_result',
+                                        'girls_result'
+                                    )
+                                    ->where('year', '=', $year)
+                                    ->where('team_id', '=', $theteam)
+                                    ->where('team_level', '=', $teamlevel)
+                                    ->get();
+
+        return $swimming;
+
+    }
+
 }

@@ -376,6 +376,8 @@ Route::delete('/swimming/{swimming}', 'SwimmingController@delete');
 Route::get('/swimming/{year}/{team}', 'SwimmingController@teamschedule');
 Route::get('/swimming/{year}', 'SwimmingController@yearschedule');
 
+Route::get('/api/swimming/schedule/{year}/{team}/{teamlevel}', 'SwimmingController@apiteamschedule');
+
 
 
 //  Track
