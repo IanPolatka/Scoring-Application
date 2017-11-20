@@ -16,6 +16,11 @@ use Session;
 
 class BasketballboysController extends Controller
 {
+
+	public function __construct() 
+    {
+      $this->middleware('auth', ['only' => [ 'create', 'edit', 'delete' ]]);
+    }
     
 	public function index()
 	{
@@ -28,10 +33,11 @@ class BasketballboysController extends Controller
 
 		//  Query The Current Year
 		$currentyear = CurrentYear::find(1)->pluck('year_id');
+
 		$showcurrentyear = Year::where('id', $currentyear)->pluck('year');
 
 		//  Query All Games By The Current Year
-		$basketball = Basketballboys::where('year_id', $currentyear)->orderBy('date')->select('basketball_boys.*')->get();
+		$basketball = Basketballboys::where('year_id', $currentyear)->orderBy('date')->get();
 
 		return view('sports.basketball_boys.index', compact('basketball', 'showcurrentyear', 'teams', 'years'));
 

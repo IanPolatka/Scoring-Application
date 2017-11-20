@@ -138,11 +138,11 @@
                         <span class="pull-right" style="width: 25px">{{ $basketball->away_team_first_qrt_score }}</span>
                       </li>
                       <li class="list-group-item">
-                        @if ($basketball->home_team->logo)
-                          <img src="/images/team-logos/{{ $basketball->home_team->logo }}" 
+                        @if ($basketball->home_team['logo'])
+                          <img src="/images/team-logos/{{ $basketball->home_team['logo'] }}" 
                             style="height: 20px; width: 20px; float: left; margin-right: 10px;">
                         @endif
-                        {{ $basketball->home_team->school_name }}
+                        {{ $basketball->home_team['school_name'] }}
                         @if ($basketball->possession === $basketball->home_team_id)
                           <small><span class="glyphicon glyphicon-bell" aria-hidden="true" style="margin-left: 10px"></span></small>
                         @endif
@@ -382,7 +382,7 @@
 
                         <div class="form-group">
 
-                          <label for="away_team_first_qrt_score">{{ $basketball->home_team->school_name }} {{ $basketball->home_team->mascot }} First Quarter Score</label>
+                          <label for="away_team_first_qrt_score">{{ $basketball->home_team['school_name'] }} {{ $basketball->home_team['mascot'] }} First Quarter Score</label>
 
                           <select name="home_team_first_qrt_score" id="home_team_first_qrt_score" class="form-control">
                               <option value="">Enter Score</option>
@@ -395,7 +395,7 @@
 
                         <div class="form-group">
 
-                          <label for="home_team_second_qrt_score">{{ $basketball->home_team->school_name }} {{ $basketball->home_team->mascot }} Second Quarter Score</label>
+                          <label for="home_team_second_qrt_score">{{ $basketball->home_team['school_name'] }} {{ $basketball->home_team['mascot'] }} Second Quarter Score</label>
 
                           <select name="home_team_second_qrt_score" id="home_team_second_qrt_score" class="form-control">
                               <option value="">Enter Score</option>
@@ -408,7 +408,7 @@
 
                         <div class="form-group">
 
-                          <label for="home_team_third_qrt_score">{{ $basketball->home_team->school_name }} {{ $basketball->home_team->mascot }} Third Quarter Score</label>
+                          <label for="home_team_third_qrt_score">{{ $basketball->home_team['school_name'] }} {{ $basketball->home_team['mascot'] }} Third Quarter Score</label>
 
                           <select name="home_team_third_qrt_score" id="home_team_third_qrt_score" class="form-control">
                               <option value="">Enter Score</option>
@@ -421,7 +421,7 @@
 
                         <div class="form-group">
 
-                          <label for="home_team_fourth_qrt_score">{{ $basketball->home_team->school_name }} {{ $basketball->home_team->mascot }} Fourth Quarter Score</label>
+                          <label for="home_team_fourth_qrt_score">{{ $basketball->home_team['school_name'] }} {{ $basketball->home_team['mascot'] }} Fourth Quarter Score</label>
 
                           <select name="home_team_fourth_qrt_score" id="home_team_fourth_qrt_score" class="form-control">
                               <option value="">Enter Score</option>
@@ -434,7 +434,7 @@
 
                         <div class="form-group">
 
-                          <label for="home_team_overtime_score">{{ $basketball->home_team->school_name }} {{ $basketball->home_team->mascot }} Overtime Score</label>
+                          <label for="home_team_overtime_score">{{ $basketball->home_team['school_name'] }} {{ $basketball->home_team['mascot'] }} Overtime Score</label>
 
                           <select name="home_team_overtime_score" id="home_team_overtime_score" class="form-control">
                               <option value="">Enter Score</option>
@@ -451,7 +451,7 @@
 
                         <div class="form-group">
                           <label for="home_team_final_score">
-                              {{ $basketball->home_team->school_name }} {{ $basketball->home_team->mascot }} Final Score
+                              {{ $basketball->home_team['school_name'] }} {{ $basketball->home_team['mascot'] }} Final Score
                             </label>
                           <div class="input-group">
                             <div class="input-group-btn">
@@ -564,8 +564,8 @@
                             <option value="{{ $basketball->away_team->id }}" @if ($basketball->winning_team === $basketball->away_team_id) selected @endif>
                               {{ $basketball->away_team->school_name }}
                             </option>
-                            <option value="{{ $basketball->home_team->id }}" @if ($basketball->winning_team === $basketball->home_team_id) selected @endif>
-                              {{ $basketball->home_team->school_name }}
+                            <option value="{{ $basketball->home_team['id'] }}" @if ($basketball->winning_team === $basketball->home_team_id) selected @endif>
+                              {{ $basketball->home_team['school_name'] }}
                             </option>
 
                           </select>
@@ -581,10 +581,10 @@
                             <option value="">Select A Team</option>
 
                             <option value="{{ $basketball->away_team->id }}" @if ($basketball->losing_team === $basketball->away_team_id) selected @endif>
-                              {{ $basketball->away_team->school_name }}
+                              {{ $basketball->away_team['school_name'] }}
                             </option>
-                            <option value="{{ $basketball->home_team->id }}" @if ($basketball->losing_team === $basketball->home_team_id) selected @endif>
-                              {{ $basketball->home_team->school_name }}
+                            <option value="{{ $basketball->home_team['id'] }}" @if ($basketball->losing_team === $basketball->home_team_id) selected @endif>
+                              {{ $basketball->home_team['school_name'] }}
                             </option>
 
                           </select>

@@ -67,7 +67,40 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Boys Basketball Schedule</div>
                     <ul class="list-group">
+
                         @forelse ($basketball as $item)
+
+                            <li class="list-group-item">
+                                {{ Carbon\Carbon::parse($item->date)->format('l') }} {{ Carbon\Carbon::parse($item->date)->format('M j, o') }}<br />
+                                @if ( $item->away_team['logo'] )
+                                    <img src="/images/team-logos/{{ $item->away_team['logo'] }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;">
+                                @endif
+                                <a href="/basketball-boys/{{ $showcurrentyear[0] }}/{{ $item->away_team['school_name'] }}">
+                                    {{ $item->away_team['school_name'] }}
+                                </a> vs
+                                @if ( $item->home_team['logo'] )
+                                    <img src="/images/team-logos/{{ $item->home_team['logo'] }}" style="height: 20px; width: 20px; border-radius: 3px;margin: 0px 5px;"> 
+                                @endif
+                                <a href="/basketball-boys/{{ $showcurrentyear[0] }}/{{ $item->home_team['school_name'] }}">
+                                    {{ $item->home_team['school_name'] }}
+                                </a>
+                                @if ($item->tournament_title)
+                                    <small>({{ $item->tournament_title }})</small>
+                                @endif
+                                @if (Auth::user())
+                                    <span class="pull-right"><a href="/basketball-boys/game/{{ $item->id }}/edit">Edit</a></span>&nbsp;&nbsp;&nbsp;
+                                @endif
+                            </li>
+
+                        @empty
+
+                            <li class="list-group-item">No Games Posted</li>
+
+                        @endforelse
+
+                        <?php /*
+
+                        <!-- @forelse ($basketball as $item)
 
                             <li class="list-group-item">
                                 {{ Carbon\Carbon::parse($item->date)->format('l') }} {{ Carbon\Carbon::parse($item->date)->format('M j, o') }}<br />
@@ -91,7 +124,7 @@
 
                             <li class="list-group-item">No Games Posted</li>
 
-                        @endforelse
+                        @endforelse --> */ ?>
 
                     </ul>
             </div>
