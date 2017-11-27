@@ -298,4 +298,62 @@ class BasketballboysController extends Controller
 
 	}
 
+
+
+	public function todaysevents($team)
+	{
+
+		$today = Carbon::tomorrow('America/New_York');
+
+		// return $today;
+
+		$theteam = Team::where('school_name', '=', $team)->pluck('id');
+
+		$football = Basketballboys::join('teams as home_team', 'basketball_boys.home_team_id', '=', 'home_team.id')
+							->join('teams as away_team', 'basketball_boys.away_team_id', '=', 'away_team.id')
+							->join('years', 'basketball_boys.year_id', '=', 'years.id')
+							->join('times', 'basketball_boys.time_id', '=', 'times.id')
+							->select(
+									'basketball_boys.id',
+									'basketball_boys.date',
+									'year',
+									'scrimmage',
+									'time',
+									'basketball_boys.tournament_title',
+									'away_team.school_name as away_team',
+									'away_team.logo as away_team_logo',
+									'basketball_boys.away_team_first_qrt_score',
+									'basketball_boys.away_team_second_qrt_score',
+									'basketball_boys.away_team_third_qrt_score',
+									'basketball_boys.away_team_fourth_qrt_score',
+									'basketball_boys.away_team_overtime_score',
+									'basketball_boys.away_team_final_score',
+									'home_team.school_name as home_team',
+									'home_team.logo as home_team_logo',
+									'basketball_boys.home_team_first_qrt_score',
+									'basketball_boys.home_team_second_qrt_score',
+									'basketball_boys.home_team_third_qrt_score',
+									'basketball_boys.home_team_fourth_qrt_score',
+									'basketball_boys.home_team_overtime_score',
+									'basketball_boys.home_team_final_score',
+									'basketball_boys.game_status',
+									'basketball_boys.minutes_remaining',
+									'basketball_boys.seconds_remaining',
+									'basketball_boys.winning_team',
+									'basketball_boys.losing_team',
+									'basketball_boys.team_level'
+								)
+							->where('basketball_boys.team_level', '=', 1)
+							->where(function ($query) use ($theteam) {
+						        $query->where('away_team_id', '=' , $theteam)
+						            ->orWhere('home_team_id', '=', $theteam);
+						    })
+							->where('date', '=', $today)
+    						->orderBy('time')
+					    	->get();
+
+		return $football;
+
+	}
+
 }

@@ -115,6 +115,7 @@ Route::get('/basketball-boys/{year}', 'BasketballboysController@yearschedule');
 
 
 Route::get('/api/boys-basketball/schedule/{year}/{team}/{teamlevel}', 'BasketballboysController@apiteamschedule');
+Route::get('/api/boys-basketball/todays-events/{team}', 'BasketballboysController@todaysevents');
 
 
 
