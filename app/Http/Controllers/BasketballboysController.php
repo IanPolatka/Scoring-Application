@@ -303,13 +303,13 @@ class BasketballboysController extends Controller
 	public function todaysevents($team)
 	{
 
-		$today = Carbon::tomorrow('America/New_York');
+		$today = Carbon::today();
 
 		// return $today;
 
 		$theteam = Team::where('school_name', '=', $team)->pluck('id');
 
-		$football = Basketballboys::join('teams as home_team', 'basketball_boys.home_team_id', '=', 'home_team.id')
+		$basketball = Basketballboys::join('teams as home_team', 'basketball_boys.home_team_id', '=', 'home_team.id')
 							->join('teams as away_team', 'basketball_boys.away_team_id', '=', 'away_team.id')
 							->join('years', 'basketball_boys.year_id', '=', 'years.id')
 							->join('times', 'basketball_boys.time_id', '=', 'times.id')
@@ -352,7 +352,7 @@ class BasketballboysController extends Controller
     						->orderBy('time')
 					    	->get();
 
-		return $football;
+		return $basketball;
 
 	}
 
