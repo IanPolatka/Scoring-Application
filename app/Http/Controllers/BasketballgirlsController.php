@@ -245,6 +245,8 @@ class BasketballgirlsController extends Controller
 							->join('teams as away_team', 'basketball_girls.away_team_id', '=', 'away_team.id')
 							->join('years', 'basketball_girls.year_id', '=', 'years.id')
 							->join('times', 'basketball_girls.time_id', '=', 'times.id')
+							->leftjoin('teams as winner', 'basketball_girls.winning_team', '=', 'winner.id')
+							->leftjoin('teams as loser', 'basketball_girls.losing_team', '=', 'loser.id')
 							->select(
 									'team_level',
 									'basketball_girls.id',
@@ -274,8 +276,8 @@ class BasketballgirlsController extends Controller
 									'basketball_girls.game_status',
 									'basketball_girls.minutes_remaining',
 									'basketball_girls.seconds_remaining',
-									'basketball_girls.winning_team',
-									'basketball_girls.losing_team'
+									'winner.school_name as winning_team',
+									'loser.school_name as losing_team'
 								)
 							->where('year', '=', $year)
 							->where(function ($query) use ($theteam) {
@@ -329,8 +331,6 @@ class BasketballgirlsController extends Controller
 									'basketball_girls.game_status',
 									'basketball_girls.minutes_remaining',
 									'basketball_girls.seconds_remaining',
-									'basketball_girls.winning_team',
-									'basketball_girls.losing_team',
 									'basketball_girls.team_level'
 								)
 							->where('basketball_girls.team_level', '=', 1)
