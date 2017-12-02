@@ -358,4 +358,61 @@ class BasketballboysController extends Controller
 
 	}
 
+
+
+	public function apigame($id)
+	{
+
+		$basketball_boys = Basketballboys::join('teams as home_team', 'basketball_boys.home_team_id', '=', 'home_team.id')
+							->join('teams as away_team', 'basketball_boys.away_team_id', '=', 'away_team.id')
+							->join('years', 'basketball_boys.year_id', '=', 'years.id')
+							->join('times', 'basketball_boys.time_id', '=', 'times.id')
+							->select(
+									'basketball_boys.id',
+									'basketball_boys.date',
+									'year',
+									'scrimmage',
+									'time',
+									'basketball_boys.tournament_title',
+									'basketball_boys.possession',
+									'away_team_id',
+									'away_team.school_name as away_team',
+									'away_team.abbreviated_name as away_team_abbreviated_name',
+									'away_team.mascot as away_team_mascot',
+									'away_team.logo as away_team_logo',
+									'away_team.city as away_team_city',
+									'away_team.state as away_team_state',
+									'basketball_boys.away_team_first_qrt_score',
+									'basketball_boys.away_team_second_qrt_score',
+									'basketball_boys.away_team_third_qrt_score',
+									'basketball_boys.away_team_fourth_qrt_score',
+									'basketball_boys.away_team_overtime_score',
+									'basketball_boys.away_team_final_score',
+									'home_team_id',
+									'home_team.school_name as home_team',
+									'home_team.abbreviated_name as home_team_abbreviated_name',
+									'home_team.mascot as home_team_mascot',
+									'home_team.logo as home_team_logo',
+									'home_team.city as home_team_city',
+									'home_team.state as home_team_state',
+									'basketball_boys.home_team_first_qrt_score',
+									'basketball_boys.home_team_second_qrt_score',
+									'basketball_boys.home_team_third_qrt_score',
+									'basketball_boys.home_team_fourth_qrt_score',
+									'basketball_boys.home_team_overtime_score',
+									'basketball_boys.home_team_final_score',
+									'basketball_boys.game_status',
+									'basketball_boys.minutes_remaining',
+									'basketball_boys.seconds_remaining',
+									'basketball_boys.winning_team',
+									'basketball_boys.losing_team'
+								)
+							->where('basketball_boys.id', '=', $id)
+					    	->get();
+
+
+		return $basketball_boys;
+
+	}
+
 }
