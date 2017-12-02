@@ -374,7 +374,6 @@ class BasketballboysController extends Controller
 									'scrimmage',
 									'time',
 									'basketball_boys.tournament_title',
-									'basketball_boys.possession',
 									'away_team_id',
 									'away_team.school_name as away_team',
 									'away_team.abbreviated_name as away_team_abbreviated_name',
