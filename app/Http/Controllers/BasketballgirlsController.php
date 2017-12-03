@@ -345,5 +345,61 @@ class BasketballgirlsController extends Controller
 		return $basketball;
 
 	}
+
+
+
+	 public function apigame($id)
+	{
+
+		$basketball_girls = Basketballgirls::join('teams as home_team', 'basketball_girls.home_team_id', '=', 'home_team.id')
+							->join('teams as away_team', 'basketball_girls.away_team_id', '=', 'away_team.id')
+							->join('years', 'basketball_girls.year_id', '=', 'years.id')
+							->join('times', 'basketball_girls.time_id', '=', 'times.id')
+							->select(
+									'basketball_girls.id',
+									'basketball_girls.date',
+									'year',
+									'scrimmage',
+									'time',
+									'basketball_girls.tournament_title',
+									'away_team_id',
+									'away_team.school_name as away_team',
+									'away_team.abbreviated_name as away_team_abbreviated_name',
+									'away_team.mascot as away_team_mascot',
+									'away_team.logo as away_team_logo',
+									'away_team.city as away_team_city',
+									'away_team.state as away_team_state',
+									'basketball_girls.away_team_first_qrt_score',
+									'basketball_girls.away_team_second_qrt_score',
+									'basketball_girls.away_team_third_qrt_score',
+									'basketball_girls.away_team_fourth_qrt_score',
+									'basketball_girls.away_team_overtime_score',
+									'basketball_girls.away_team_final_score',
+									'home_team_id',
+									'home_team.school_name as home_team',
+									'home_team.abbreviated_name as home_team_abbreviated_name',
+									'home_team.mascot as home_team_mascot',
+									'home_team.logo as home_team_logo',
+									'home_team.city as home_team_city',
+									'home_team.state as home_team_state',
+									'basketball_girls.home_team_first_qrt_score',
+									'basketball_girls.home_team_second_qrt_score',
+									'basketball_girls.home_team_third_qrt_score',
+									'basketball_girls.home_team_fourth_qrt_score',
+									'basketball_girls.home_team_overtime_score',
+									'basketball_girls.home_team_final_score',
+									'basketball_girls.game_status',
+									'basketball_girls.minutes_remaining',
+									'basketball_girls.seconds_remaining',
+									'basketball_girls.winning_team',
+									'basketball_girls.losing_team'
+								)
+							->where('basketball_girls.id', '=', $id)
+					    	->get();
+
+
+		return $basketball_girls;
+
+	}
     
 }
