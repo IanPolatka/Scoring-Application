@@ -220,6 +220,7 @@ class SwimmingController extends Controller
                                     ->where('year', '=', $year)
                                     ->where('team_id', '=', $theteam)
                                     ->where('team_level', '=', $teamlevel)
+                                    ->orderBy('date')
                                     ->get();
 
         return $swimming;
