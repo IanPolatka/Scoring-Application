@@ -204,9 +204,9 @@
                         <div class="form-group">
                           <label for="team_level">What Team Level Is This For?</label>
                           <select name="team_level" id="team_level" class="form-control">
-                              <option value="1" @if ($basketball->team_level === "1") selected @endif>Varsity</option>
-                              <option value="2" @if ($basketball->team_level === "2") selected @endif>Junior Varsity</option>
-                              <option value="3" @if ($basketball->team_level === "3") selected @endif>Freshman</option>
+                              <option value="1" @if ($basketball->team_level == "1") selected @endif>Varsity</option>
+                              <option value="2" @if ($basketball->team_level == "2") selected @endif>Junior Varsity</option>
+                              <option value="3" @if ($basketball->team_level == "3") selected @endif>Freshman</option>
                           </select>
                         </div>
 

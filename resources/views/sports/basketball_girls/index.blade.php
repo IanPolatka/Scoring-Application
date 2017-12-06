@@ -71,16 +71,16 @@
 
                             <li class="list-group-item">
                                 {{ Carbon\Carbon::parse($item->date)->format('l') }} {{ Carbon\Carbon::parse($item->date)->format('M j, o') }}<br />
-                                @if ( $item->away_team->logo )
-                                    <img src="/images/team-logos/{{ $item->away_team->logo }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;">
+                                @if ( $item['away_team']['logo'] )
+                                    <img src="/images/team-logos/{{ $item['away_team']['logo'] }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;">
                                 @endif
-                                <a href="/basketball-girls/{{ $showcurrentyear[0] }}/{{ $item->away_team->school_name }}">{{ $item->away_team->school_name }}</a> vs
-                                @if ( $item->home_team->logo )
-                                    <img src="/images/team-logos/{{ $item->home_team->logo }}" style="height: 20px; width: 20px; border-radius: 3px;margin: 0px 5px;"> 
+                                <a href="/basketball-girls/{{ $showcurrentyear[0] }}/{{ $item['away_team']['school_name'] }}">{{ $item['away_team']['school_name'] }}</a> vs
+                                @if ( $item['home_team']['logo'] )
+                                    <img src="/images/team-logos/{{ $item['home_team']['logo'] }}" style="height: 20px; width: 20px; border-radius: 3px;margin: 0px 5px;"> 
                                 @endif
-                                <a href="/basketball-girls/{{ $showcurrentyear[0] }}/{{ $item->home_team->school_name }}">{{ $item->home_team->school_name }}</a>
+                                <a href="/basketball-girls/{{ $showcurrentyear[0] }}/{{ $item['home_team']['school_name'] }}">{{ $item['home_team']['school_name'] }}</a>
                                 @if ($item->tournament_title)
-                                    <small>({{ $item->tournament_title }})</small>
+                                    <small>({{ $item['tournament_title'] }})</small>
                                 @endif
                                 @if (Auth::user())
                                     <span class="pull-right"><a href="/basketball-girls/game/{{ $item->id }}/edit">Edit</a></span>&nbsp;&nbsp;&nbsp;
