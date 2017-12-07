@@ -118,6 +118,8 @@ Route::get('/api/boys-basketball/schedule/{year}/{team}/{teamlevel}', 'Basketbal
 Route::get('/api/boys-basketball/todays-events/{team}', 'BasketballboysController@todaysevents');
 Route::get('/api/boys-basketball/game/{id}', 'BasketballboysController@apigame');
 
+Route::get('/api/boys-basketball/record/{year}/{team}', 'BasketballboysController@yearsummary');
+
 
 
 //  Basketball Girls
@@ -139,6 +141,8 @@ Route::get('/basketball-girls/{year}', 'BasketballgirlsController@yearschedule')
 Route::get('/api/girls-basketball/schedule/{year}/{team}/{teamlevel}', 'BasketballgirlsController@apiteamschedule');
 Route::get('/api/girls-basketball/todays-events/{team}', 'BasketballgirlsController@todaysevents');
 Route::get('/api/girls-basketball/game/{id}', 'BasketballgirlsController@apigame');
+
+Route::get('/api/girls-basketball/record/{year}/{team}', 'BasketballgirlsController@yearsummary');
 
 
 
