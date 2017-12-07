@@ -200,7 +200,7 @@ class BasketballgirlsController extends Controller
 
 
 		//  Display schedule for team based on selected year
-		$basketball = Basketballgirls::join('years', 'basketball_girls.year_id', 'years.id')
+		$basketball_varsity = Basketballgirls::join('years', 'basketball_girls.year_id', 'years.id')
 							->select('basketball_girls.*')
 							->where('year_id', '=', $selectedyearid)
 							->where(function ($query) use ($selectedteamid) {
@@ -208,12 +208,39 @@ class BasketballgirlsController extends Controller
 						            ->orWhere('home_team_id', '=', $selectedteamid);
 						    })
 						    ->orderBy('date')
+						    ->where('team_level', 1)
+							->get();
+
+		//  Display schedule for team based on selected year
+		$basketball_jv = Basketballgirls::join('years', 'basketball_girls.year_id', 'years.id')
+							->select('basketball_girls.*')
+							->where('year_id', '=', $selectedyearid)
+							->where(function ($query) use ($selectedteamid) {
+						        $query->where('away_team_id', '=' , $selectedteamid)
+						            ->orWhere('home_team_id', '=', $selectedteamid);
+						    })
+						    ->orderBy('date')
+						    ->where('team_level', 2)
+							->get();
+
+		//  Display schedule for team based on selected year
+		$basketball_freshman = Basketballgirls::join('years', 'basketball_girls.year_id', 'years.id')
+							->select('basketball_girls.*')
+							->where('year_id', '=', $selectedyearid)
+							->where(function ($query) use ($selectedteamid) {
+						        $query->where('away_team_id', '=' , $selectedteamid)
+						            ->orWhere('home_team_id', '=', $selectedteamid);
+						    })
+						    ->orderBy('date')
+						    ->where('team_level', 3)
 							->get();
 
 		$region 		= Team::where('school_name', $team)->pluck('region_baseball');
 		$standings		= Team::where('region_baseball', $region)->orderBy('school_name')->get();
 
-		return view('sports.basketball_girls.teamschedule', compact('basketball', 
+		return view('sports.basketball_girls.teamschedule', compact('basketball_varsity',
+															'basketball_jv',
+															'basketball_freshman',
 															'selectedteam',
 															'selectedteamid',
 															'selectedyear',
