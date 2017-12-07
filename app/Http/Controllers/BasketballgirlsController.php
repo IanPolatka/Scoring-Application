@@ -125,7 +125,33 @@ class BasketballgirlsController extends Controller
 		//  Display the game times
 		$times = Time::all();
 
-		return view('sports.basketball_girls.edit', compact('years', 'thecurrentyear', 'teams', 'times', 'basketball'));
+		$away_team_score_computed = 	\DB::table('basketball_girls')
+    				->select(\DB::raw('sum(
+    							IFNULL( `basketball_girls`.`away_team_first_qrt_score` , 0 ) +
+    							IFNULL( `basketball_girls`.`away_team_second_qrt_score` , 0 ) +
+    							IFNULL( `basketball_girls`.`away_team_third_qrt_score` , 0 ) +
+    							IFNULL( `basketball_girls`.`away_team_fourth_qrt_score` , 0 ) +
+    							IFNULL( `basketball_girls`.`away_team_overtime_score` , 0 )
+    							)
+    							AS score' 
+    				))
+    				->where('id', '=', $id)
+    				->get()->pluck('score')->first();
+
+    	$home_team_score_computed = 	\DB::table('basketball_girls')
+    				->select(\DB::raw('sum(
+    							IFNULL( `basketball_girls`.`home_team_first_qrt_score` , 0 ) +
+    							IFNULL( `basketball_girls`.`home_team_second_qrt_score` , 0 ) +
+    							IFNULL( `basketball_girls`.`home_team_third_qrt_score` , 0 ) +
+    							IFNULL( `basketball_girls`.`home_team_fourth_qrt_score` , 0 ) +
+    							IFNULL( `basketball_girls`.`home_team_overtime_score` , 0 )
+    							)
+    							AS score' 
+    				))
+    				->where('id', '=', $id)
+    				->get()->pluck('score')->first();
+
+		return view('sports.basketball_girls.edit', compact('away_team_score_computed', 'home_team_score_computed', 'years', 'thecurrentyear', 'teams', 'times', 'basketball'));
 
 	}
 
@@ -258,6 +284,8 @@ class BasketballgirlsController extends Controller
 									'away_team.school_name as away_team',
 									'away_team.mascot as away_team_mascot',
 									'away_team.logo as away_team_logo',
+									'away_team.region_basketball as away_team_region',
+									'away_team.district_basketball as away_team_district',
 									'basketball_girls.away_team_first_qrt_score',
 									'basketball_girls.away_team_second_qrt_score',
 									'basketball_girls.away_team_third_qrt_score',
@@ -267,6 +295,8 @@ class BasketballgirlsController extends Controller
 									'home_team.school_name as home_team',
 									'home_team.mascot as home_team_mascot',
 									'home_team.logo as home_team_logo',
+									'home_team.region_basketball as home_team_region',
+									'home_team.district_basketball as home_team_district',
 									'basketball_girls.home_team_first_qrt_score',
 									'basketball_girls.home_team_second_qrt_score',
 									'basketball_girls.home_team_third_qrt_score',
