@@ -77,7 +77,7 @@ class FootballController extends Controller
 		//  Count Away Team Wins		
     	$away_team_wins_total = Football::where('winning_team', '=', $away_team)
     									->where('year_id', '=', $selectedyearid)
-    									->where('team_level',1)
+    									->where('team_level', '=', 1)
     									->get();
 		$away_team_wins = $away_team_wins_total->count();
 
@@ -225,12 +225,14 @@ class FootballController extends Controller
 		//  Count Away Team Wins		
     	$away_team_wins_total = Football::where('winning_team', '=', $away_team)
     									->where('year_id', '=', $selectedyearid)
+    									->where('team_level', 1)
     									->get();
 		$away_team_wins = $away_team_wins_total->count();
 
 		//  Count Away Team Losses	
 		$away_team_losses_total = Football::where('losing_team', '=', $away_team)
 										->where('year_id', '=', $selectedyearid)
+										->where('team_level', 1)
 										->get();
 		$away_team_losses = $away_team_losses_total->count();
 
@@ -238,12 +240,14 @@ class FootballController extends Controller
 		//  Count Home Team Wins		
     	$home_team_wins_total = Football::where('winning_team', '=', $home_team)
     									->where('year_id', '=', $selectedyearid)
+    									->where('team_level', 1)
     									->get();
 		$home_team_wins = $home_team_wins_total->count();
 
 		//  Count Home Team Losses	
 		$home_team_losses_total = Football::where('losing_team', '=', $home_team)
 										->where('year_id', '=', $selectedyearid)
+										->where('team_level', 1)
 										->get();
 		$home_team_losses = $home_team_losses_total->count();
 
@@ -581,6 +585,8 @@ class FootballController extends Controller
 									'football.possession',
 									'away_team.school_name as away_team',
 									'away_team.logo as away_team_logo',
+									'away_team.class_football as away_team_football_class',
+									'away_team.district_football as away_team_football_district',
 									'football.away_team_first_qrt_score',
 									'football.away_team_second_qrt_score',
 									'football.away_team_third_qrt_score',
@@ -589,6 +595,8 @@ class FootballController extends Controller
 									'football.away_team_final_score',
 									'home_team.school_name as home_team',
 									'home_team.logo as home_team_logo',
+									'home_team.class_football as home_team_football_class',
+									'home_team.district_football as home_team_football_district',
 									'football.home_team_first_qrt_score',
 									'football.home_team_second_qrt_score',
 									'football.home_team_third_qrt_score',
@@ -640,6 +648,8 @@ class FootballController extends Controller
 									'football.possession',
 									'away_team.school_name as away_team',
 									'away_team.logo as away_team_logo',
+									'away_team.class_football as away_team_football_class',
+									'away_team.district_football as away_team_football_district',
 									'football.away_team_first_qrt_score',
 									'football.away_team_second_qrt_score',
 									'football.away_team_third_qrt_score',
@@ -648,6 +658,8 @@ class FootballController extends Controller
 									'football.away_team_final_score',
 									'home_team.school_name as home_team',
 									'home_team.logo as home_team_logo',
+									'home_team.class_football as home_team_football_class',
+									'home_team.district_football as home_team_football_district',
 									'football.home_team_first_qrt_score',
 									'football.home_team_second_qrt_score',
 									'football.home_team_third_qrt_score',
