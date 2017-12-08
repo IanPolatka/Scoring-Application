@@ -76,19 +76,19 @@
                                     @if ($item['home_team']['logo'])
                                         <img src="/images/team-logos/{{ $item['home_team']['logo'] }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;">
                                     @endif
-                                    @ <a href="/basketball-boys/{{ $selectedyear[0] }}/{{ $item['home_team']['school_name'] }}">
+                                    @ <a href="/basketball-girls/{{ $selectedyear[0] }}/{{ $item['home_team']['school_name'] }}">
                                         {{ $item['home_team']['school_name'] }}
                                     </a>
                                 @else
                                     @if ($item['away_team']['logo'])
                                         <img src="/images/team-logos/{{ $item->away_team->logo }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;"> 
                                     @endif
-                                    vs <a href="/basketball-boys/{{ $selectedyear[0] }}/{{ $item->away_team->school_name }}">
+                                    vs <a href="/basketball-girls/{{ $selectedyear[0] }}/{{ $item->away_team->school_name }}">
                                         {{ $item->away_team->school_name }}
                                     </a>
                                 @endif
                                 @if (Auth::user())
-                                    <span class="pull-right"><a href="/basketball-boys/game/{{ $item->id }}/edit">Edit</a></span>&nbsp;&nbsp;&nbsp;
+                                    <span class="pull-right"><a href="/basketball-girls/game/{{ $item->id }}/edit">Edit</a></span>&nbsp;&nbsp;&nbsp;
                                 @endif
                             </li>
 
@@ -113,19 +113,19 @@
                                     @if ($item['home_team']['logo'])
                                         <img src="/images/team-logos/{{ $item['home_team']['logo'] }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;">
                                     @endif
-                                    @ <a href="/basketball-boys/{{ $selectedyear[0] }}/{{ $item['home_team']['school_name'] }}">
+                                    @ <a href="/basketball-girls/{{ $selectedyear[0] }}/{{ $item['home_team']['school_name'] }}">
                                         {{ $item['home_team']['school_name'] }}
                                     </a>
                                 @else
                                     @if ($item['away_team']['logo'])
                                         <img src="/images/team-logos/{{ $item->away_team->logo }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;"> 
                                     @endif
-                                    vs <a href="/basketball-boys/{{ $selectedyear[0] }}/{{ $item->away_team->school_name }}">
+                                    vs <a href="/basketball-girls/{{ $selectedyear[0] }}/{{ $item->away_team->school_name }}">
                                         {{ $item->away_team->school_name }}
                                     </a>
                                 @endif
                                 @if (Auth::user())
-                                    <span class="pull-right"><a href="/basketball-boys/game/{{ $item->id }}/edit">Edit</a></span>&nbsp;&nbsp;&nbsp;
+                                    <span class="pull-right"><a href="/basketball-girls/game/{{ $item->id }}/edit">Edit</a></span>&nbsp;&nbsp;&nbsp;
                                 @endif
                             </li>
 
@@ -148,19 +148,19 @@
                                     @if ($item['home_team']['logo'])
                                         <img src="/images/team-logos/{{ $item['home_team']['logo'] }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;">
                                     @endif
-                                    @ <a href="/basketball-boys/{{ $selectedyear[0] }}/{{ $item['home_team']['school_name'] }}">
+                                    @ <a href="/basketball-girls/{{ $selectedyear[0] }}/{{ $item['home_team']['school_name'] }}">
                                         {{ $item['home_team']['school_name'] }}
                                     </a>
                                 @else
                                     @if ($item['away_team']['logo'])
                                         <img src="/images/team-logos/{{ $item->away_team->logo }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;"> 
                                     @endif
-                                    vs <a href="/basketball-boys/{{ $selectedyear[0] }}/{{ $item->away_team->school_name }}">
+                                    vs <a href="/basketball-girls/{{ $selectedyear[0] }}/{{ $item->away_team->school_name }}">
                                         {{ $item->away_team->school_name }}
                                     </a>
                                 @endif
                                 @if (Auth::user())
-                                    <span class="pull-right"><a href="/basketball-boys/game/{{ $item->id }}/edit">Edit</a></span>&nbsp;&nbsp;&nbsp;
+                                    <span class="pull-right"><a href="/basketball-girls/game/{{ $item->id }}/edit">Edit</a></span>&nbsp;&nbsp;&nbsp;
                                 @endif
                             </li>
 
