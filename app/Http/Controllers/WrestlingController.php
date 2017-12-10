@@ -61,7 +61,7 @@ class WrestlingController extends Controller
         $years = Year::all();
 
         //  Display all the teams
-        $teams = Team::all();
+        $teams = Team::orderBy('school_name', 'asc')->get();
 
         //  Display the game times
         $times = Time::all();
@@ -84,7 +84,8 @@ class WrestlingController extends Controller
             'scrimmage'                 =>  request('scrimmage'),
             'tournament_title'          =>  request('tournament_title'),
             'time_id'                   =>  request('time_id'),
-            'result'                    =>  request('result')
+            'result'                    =>  request('result'),
+            'host_id'                   =>  request('host_id')
 
         ]);
 
@@ -106,7 +107,7 @@ class WrestlingController extends Controller
         $years = Year::all();
 
         //  Display all teams
-        $teams = Team::all();
+        $teams = Team::orderBy('school_name', 'asc')->get();
 
         //  Display the game times
         $times = Time::all();

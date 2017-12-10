@@ -23,6 +23,11 @@ class Wrestling extends Model
     {
         return $this->belongsTo('App\Team');
     }
+
+    public function host()
+    {
+        return $this->belongsTo('App\Team', 'host_id');
+    }
     
 	protected $fillable = [
 
@@ -33,8 +38,8 @@ class Wrestling extends Model
         'scrimmage',
         'tournament_title',
         'time_id',
-        'result'
-
+        'result',
+        'host_id'
     ];
 
 }
