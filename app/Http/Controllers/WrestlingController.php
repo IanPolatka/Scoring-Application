@@ -211,13 +211,15 @@ class WrestlingController extends Controller
 
         $wrestling = Wrestling::join('years', 'wrestling.year_id', '=', 'years.id')
                                  ->join('times', 'wrestling.time_id', '=', 'times.id')
+                                 ->join('teams as host', 'wrestling.host_id', '=', 'host.id')
                                  ->select(
                                     'wrestling.id',
                                     'years.year',
                                     'date',
                                     'tournament_title',
                                     'times.time',
-                                    'result'
+                                    'result',
+                                    'host.logo as tournament_host_logo'
                                 )
                                 ->where('year', '=', $year)
                                 ->where('team_id', '=', $theteam)
