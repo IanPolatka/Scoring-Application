@@ -454,7 +454,7 @@
                     
                     </form>
 
-                    <form method="POST" action="/soccer-boys/{{ $soccer->id }}">
+                    <form method="POST" action="/soccer-girls/{{ $soccer->id }}">
 
                       {{ method_field('DELETE') }}
 
