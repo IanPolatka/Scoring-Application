@@ -12,10 +12,17 @@ use App\CurrentYear;
 use App\Team;
 use App\Time;
 
+use DB;
+
 use Session;
 
 class SoccerboysController extends Controller
 {
+
+	public function __construct() 
+	{
+	  $this->middleware('auth', ['except' => ['index', 'show', 'teamschedule', 'yearschedule', 'apiteamschedule', 'apiteamschedulesummary', 'apigame', 'todaysevents', 'districtstandings', 'yearsummary' ]]);
+	}
     
 	public function index()
 	{
@@ -330,12 +337,16 @@ class SoccerboysController extends Controller
 									'soccer_boys.tournament_title',
 									'away_team.school_name as away_team',
 									'away_team.logo as away_team_logo',
+									'away_team.region_soccer as away_team_region',
+									'away_team.district_soccer as away_team_district',
 									'soccer_boys.away_team_first_half_score',
 									'soccer_boys.away_team_second_half_score',
 									'soccer_boys.away_team_overtime_score',
 									'soccer_boys.away_team_final_score',
 									'home_team.school_name as home_team',
 									'home_team.logo as home_team_logo',
+									'home_team.region_soccer as home_team_region',
+									'home_team.district_soccer as home_team_district',
 									'soccer_boys.home_team_first_half_score',
 									'soccer_boys.home_team_second_half_score',
 									'soccer_boys.home_team_overtime_score',
@@ -524,6 +535,62 @@ class SoccerboysController extends Controller
 					    	->get();
 
 		return $soccer;
+
+	}
+
+
+
+	public function yearsummary($year, $team)
+	{
+
+		// return $year;
+		$selectedyear = Year::where('year', $year)->pluck('year');
+		$selectedyearid = Year::where('year', $year)->pluck('id');
+
+		$selectedteam = Team::where('school_name', $team)->get();
+
+		$selectedteamid	=	Team::where('school_name', $team)->pluck('id');
+		$selectedDistrict = Team::where('school_name', $team)->pluck('district_soccer');
+
+		// return $selectedteam;
+
+		$the_standings = DB::select('SELECT
+ 							school_name AS Team, logo, district_soccer, Sum(W) AS Wins, Sum(L) AS Losses, SUM(F) as F,SUM(A) AS A, SUM(DW) AS DistrictWins, SUM(DL) AS DistrictLoses
+						FROM(
+
+							SELECT
+							    home_team_id Team,
+							    IF(home_team_final_score > away_team_final_score,1,0) W,
+							    IF(home_team_final_score < away_team_final_score,1,0) L,
+							    home_team_final_score F,
+							    away_team_final_score A,
+							    IF(district_game = 1 && home_team_final_score > away_team_final_score,1,0) DW,
+							    IF(district_game = 1 && home_team_final_score < away_team_final_score,1,0) DL
+							    
+							FROM soccer_boys
+							WHERE year_id = ? AND team_level = 1
+
+							UNION ALL
+							  SELECT
+							    away_team_id,
+							    IF(home_team_final_score < away_team_final_score,1,0),
+							    IF(home_team_final_score > away_team_final_score,1,0),
+							    away_team_final_score,
+							    home_team_final_score,
+							    IF(district_game = 1 && home_team_final_score < away_team_final_score,1,0),
+							    IF(district_game = 1 && home_team_final_score > away_team_final_score,1,0)
+							   
+							FROM soccer_boys
+							WHERE year_id = ? AND team_level = 1
+							  
+						)
+						as tot
+						JOIN teams t ON tot.Team=t.id
+						WHERE district_soccer = ? AND school_name = ?
+						GROUP BY Team
+						ORDER BY DistrictWins DESC, DistrictLoses ASC, wins DESC, losses ASC, school_name', array($selectedyearid[0], $selectedyearid[0], $selectedDistrict[0], $selectedteam[0]['school_name']));
+
+		return $the_standings;
 
 	}
 
