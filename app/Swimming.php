@@ -23,6 +23,11 @@ class Swimming extends Model
     {
         return $this->belongsTo('App\Team');
     }
+
+    public function host()
+    {
+        return $this->belongsTo('App\Team', 'host_id');
+    }
     
     protected $fillable = [
 
@@ -34,7 +39,8 @@ class Swimming extends Model
         'tournament_title',
         'time_id',
         'boys_result',
-        'girls_result'
+        'girls_result',
+        'host_id'
 
     ];
 

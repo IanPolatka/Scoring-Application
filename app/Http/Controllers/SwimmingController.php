@@ -80,7 +80,8 @@ class SwimmingController extends Controller
             'tournament_title'          =>  request('tournament_title'),
             'time_id'                   =>  request('time_id'),
             'boys_result'               =>  request('boys_result'),
-            'girls_result'              =>  request('girls_result')
+            'girls_result'              =>  request('girls_result'),
+            'host_id'                   =>  request('host_id')
 
         ]);
 
@@ -207,6 +208,7 @@ class SwimmingController extends Controller
         $swimming = Swimming::join('teams as schedule_for','swimming.team_id', '=', 'schedule_for.id')
                                     ->join('years', 'swimming.year_id', '=', 'years.id')
                                     ->join('times', 'swimming.time_id', '=', 'times.id')
+                                    ->join('teams as host', 'swimming.host_id', '=', 'host.id')
                                     ->select(
                                         'swimming.id',
                                         'schedule_for.school_name as schedule_for',
@@ -215,7 +217,8 @@ class SwimmingController extends Controller
                                         'tournament_title',
                                         'times.time',
                                         'boys_result',
-                                        'girls_result'
+                                        'girls_result',
+                                        'host.logo as tournament_host_logo'
                                     )
                                     ->where('year', '=', $year)
                                     ->where('team_id', '=', $theteam)
