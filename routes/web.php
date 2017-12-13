@@ -386,6 +386,8 @@ Route::get('/swimming/{year}', 'SwimmingController@yearschedule');
 
 Route::get('/api/swimming/schedule/{year}/{team}/{teamlevel}', 'SwimmingController@apiteamschedule');
 
+Route::get('/api/swimming/todays-events/{team}', 'SwimmingController@todaysevents');
+
 
 
 //  Track
