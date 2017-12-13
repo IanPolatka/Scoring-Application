@@ -230,4 +230,38 @@ class WrestlingController extends Controller
 
     }
 
+
+
+    public function todaysevents($team)
+    {
+
+        $today = Carbon::today();
+
+        $theteam = Team::where('school_name', '=', $team)->pluck('id');
+
+        $wrestling = Wrestling::join('teams as schedule_for','wrestling.team_id', '=', 'schedule_for.id')
+                                    ->join('years', 'wrestling.year_id', '=', 'years.id')
+                                    ->join('times', 'wrestling.time_id', '=', 'times.id')
+                                    ->join('teams as host', 'wrestling.host_id', '=', 'host.id')
+                                    ->select(
+                                        'wrestling.id',
+                                        'schedule_for.school_name as schedule_for',
+                                        'schedule_for.logo as schedule_for_logo',
+                                        'years.year',
+                                        'date',
+                                        'tournament_title',
+                                        'times.time',
+                                        'result',
+                                        'host.logo as tournament_host_logo'
+                                    )
+                                    ->where('team_id', '=', $theteam)
+                                    ->where('team_level', '=', 1)
+                                    ->where('date', '=', $today)
+                                    ->orderBy('time')
+                                    ->get();
+
+        return $wrestling;
+
+    }
+
 }

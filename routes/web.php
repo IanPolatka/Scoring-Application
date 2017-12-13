@@ -424,6 +424,7 @@ Route::get('/wrestling/{year}/{team}', 'WrestlingController@teamschedule');
 Route::get('/wrestling/{year}', 'WrestlingController@yearschedule');
 
 Route::get('/api/wrestling/schedule/{year}/{team}/{teamlevel}', 'WrestlingController@apiteamschedule');
+Route::get('/api/wrestling/todays-events/{team}', 'WrestlingController@todaysevents');
 
 
 
