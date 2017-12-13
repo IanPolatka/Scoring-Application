@@ -243,18 +243,17 @@ class SwimmingController extends Controller
                                     ->join('years', 'swimming.year_id', '=', 'years.id')
                                     ->join('times', 'swimming.time_id', '=', 'times.id')
                                     ->join('teams as host', 'swimming.host_id', '=', 'host.id')
-                                    ->join('teams as selectedteam', 'swimming.team_id', '=', 'selectedteam.id')
                                     ->select(
                                         'swimming.id',
                                         'schedule_for.school_name as schedule_for',
+                                        'schedule_for.logo as schedule_for_logo',
                                         'years.year',
                                         'date',
                                         'tournament_title',
                                         'times.time',
                                         'boys_result',
                                         'girls_result',
-                                        'host.logo as tournament_host_logo',
-                                        'selectedteam.school_name as theTeam'
+                                        'host.logo as tournament_host_logo'
                                     )
                                     ->where('team_id', '=', $theteam)
                                     ->where('team_level', '=', 1)
