@@ -240,4 +240,46 @@ class BowlingboysController extends Controller
 
     }
 
+
+
+    public function todaysevents($team)
+    {
+
+        $today = Carbon::today();
+
+        // return $today;
+
+        $theteam = Team::where('school_name', '=', $team)->pluck('id');
+
+        $bowling = Bowlingboys::join('teams as home_team', 'bowling_boys.home_team_id', '=', 'home_team.id')
+                            ->join('teams as away_team', 'bowling_boys.away_team_id', '=', 'away_team.id')
+                            ->join('years', 'bowling_boys.year_id', '=', 'years.id')
+                            ->join('times', 'bowling_boys.time_id', '=', 'times.id')
+                            ->select(
+                                    'bowling_boys.id',
+                                    'bowling_boys.date',
+                                    'year',
+                                    'scrimmage',
+                                    'time',
+                                    'away_team.school_name as away_team',
+                                    'away_team.logo as away_team_logo',
+                                    'home_team.school_name as home_team',
+                                    'home_team.logo as home_team_logo',
+                                    'bowling_boys.team_level'
+                                )
+                            ->where('bowling_boys.team_level', '=', 1)
+                            ->where(function ($query) use ($theteam) {
+                                $query->where('away_team_id', '=' , $theteam)
+                                    ->orWhere('home_team_id', '=', $theteam);
+                            })
+                            ->where('date', '=', $today)
+                            ->orderBy('time')
+                            ->get();
+
+        return $bowling;
+
+    }
+
+
+
 }

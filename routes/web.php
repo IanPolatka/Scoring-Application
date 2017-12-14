@@ -162,6 +162,7 @@ Route::get('/bowling-boys/{year}/{team}', 'BowlingboysController@teamschedule');
 Route::get('/bowling-boys/{year}', 'BowlingboysController@yearschedule');
 
 Route::get('/api/boys-bowling/schedule/{year}/{team}/{teamlevel}', 'BowlingboysController@apiteamschedule');
+Route::get('/api/boys-bowling/todays-events/{team}', 'BowlingboysController@todaysevents');
 
 
 
@@ -181,6 +182,7 @@ Route::get('/bowling-girls/{year}/{team}', 'BowlinggirlsController@teamschedule'
 Route::get('/bowling-girls/{year}', 'BowlinggirlsController@yearschedule');
 
 Route::get('/api/girls-bowling/schedule/{year}/{team}/{teamlevel}', 'BowlinggirlsController@apiteamschedule');
+Route::get('/api/girls-bowling/todays-events/{team}', 'BowlinggirlsController@todaysevents');
 
 
 
