@@ -80,11 +80,11 @@
                                         {{ $item->home_team->school_name }}
                                     </a>
                                 @else
-                                    @if ($item->away_team->logo)
+                                    @if ($item['away_team']['logo'])
                                         <img src="/images/team-logos/{{ $item->away_team->logo }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;">
                                     @endif
-                                    vs <a href="/softball/{{ $selectedyear[0] }}/{{ $item->away_team->school_name }}">
-                                        {{ $item->away_team->school_name }}
+                                    vs <a href="/softball/{{ $selectedyear[0] }}/{{ $item['away_team']['school_name'] }}">
+                                        {{ $item['away_team']['school_name'] }}
                                     </a>
                                 @endif
                                 @if (Auth::user())
@@ -99,6 +99,45 @@
                         @endforelse
                     </ul>
             </div>
+
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>JV Softball Schedule</strong></div>
+                    <ul class="list-group">
+                        @forelse ($jvsoftball as $item)
+
+                            <li class="list-group-item">
+                                {{ Carbon\Carbon::parse($item->date)->format('l') }} {{ Carbon\Carbon::parse($item->date)->format('M j, o') }}<br />
+                                @if ($selectedteam[0]['id'] == $item['away_team_id'])
+                                    @if ($item->home_team->logo)
+                                        <img src="/images/team-logos/{{ $item->home_team->logo }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;">
+                                    @endif
+                                    @ <a href="/softball/{{ $selectedyear[0] }}/{{ $item->home_team->school_name }}">
+                                        {{ $item->home_team->school_name }}
+                                    </a>
+                                @else
+                                    @if ($item['away_team']['logo'])
+                                        <img src="/images/team-logos/{{ $item->away_team->logo }}" style="height: 20px; width: 20px; border-radius: 3px;margin-right: 5px;">
+                                    @endif
+                                    vs <a href="/softball/{{ $selectedyear[0] }}/{{ $item['away_team']['school_name'] }}">
+                                        {{ $item['away_team']['school_name'] }}
+                                    </a>
+                                @endif
+                                @if (Auth::user())
+                                    <span class="pull-right"><a href="/softball/game/{{ $item->id }}/edit">Edit</a></span>&nbsp;&nbsp;&nbsp;
+                                @endif
+                            </li>
+
+                        @empty
+
+                            <li class="list-group-item">No Games Posted</li>
+
+                        @endforelse
+                    </ul>
+            </div>
+
+
 
         </div>
 
