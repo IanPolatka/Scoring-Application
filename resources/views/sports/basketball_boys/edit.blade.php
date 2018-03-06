@@ -537,7 +537,7 @@
                               <option value="08" @if ($basketball->seconds_remaining == "08") selected @endif>08</option>
                               <option value="09" @if ($basketball->seconds_remaining == "09") selected @endif>09</option>
                               @for ($i = 10; $i < 60; $i++)
-                                <option value='{{ $i }} @if ($basketball->seconds_remaining == $i) selected @endif'>{{ $i }}</option>
+                                <option value="{{ $i }}" @if ($basketball->seconds_remaining == $i) selected @endif>{{ $i }}</option>
                               @endfor
                           </select>
 
