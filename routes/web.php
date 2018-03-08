@@ -96,6 +96,8 @@ Route::delete('/baseball/game/{id}', 'BaseballController@delete');
 Route::get('/baseball/{year}/{team}', 'BaseballController@teamschedule');
 Route::get('/baseball/{year}', 'BaseballController@yearschedule');
 
+Route::get('/api/baseball/schedule/{year}/{team}/{teamlevel}', 'BaseballController@apiteamschedule');
+
 
 
 //  Basketball Boys
