@@ -200,4 +200,47 @@ class TennisboysController extends Controller
 
 	}
 
+
+
+	public function apiteamschedule($year, $team, $teamlevel)
+    {
+
+        $theteam = Team::where('school_name', '=', $team)->pluck('id');
+
+        $tennis = Tennisboys::join('teams as home_team', 'tennis_boys.home_team_id', '=', 'home_team.id')
+                            ->join('teams as away_team', 'tennis_boys.away_team_id', '=', 'away_team.id')
+                            ->join('years', 'tennis_boys.year_id', '=', 'years.id')
+                            ->join('times', 'tennis_boys.time_id', '=', 'times.id')
+                            ->leftjoin('teams as winning', 'tennis_boys.winner', '=', 'winning.id')
+                            ->leftjoin('teams as losing', 'tennis_boys.loser', '=', 'losing.id')
+                            ->select(
+                                    'tennis_boys.id',
+                                    'tennis_boys.date',
+                                    'year',
+                                    'scrimmage',
+                                    'time',
+                                    'tennis_boys.tournament_title',
+                                    'away_team.school_name as away_team',
+                                    'away_team.logo as away_team_logo',
+                                    'away_team.mascot as away_team_mascot',
+                                    'home_team.school_name as home_team',
+                                    'home_team.logo as home_team_logo',
+                                    'home_team.mascot as home_team_mascot',
+                                    'winning.school_name as winner_team',
+                                    'losing.school_name as losing_team',
+                                    'tennis_boys.match_score'
+                                )
+                            ->where('year', '=', $year)
+                            ->where(function ($query) use ($theteam) {
+                                $query->where('away_team_id', '=' , $theteam)
+                                    ->orWhere('home_team_id', '=', $theteam);
+                            })
+                            ->where('team_level', '=', $teamlevel)
+                            ->orderBy('date')
+                            ->get();
+
+        return $tennis;
+
+    }
+
 }
