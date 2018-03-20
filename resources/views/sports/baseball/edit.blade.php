@@ -607,8 +607,8 @@
                             <option value="5" @if ($baseball->game_status == "5") selected @endif>5th Inning</option>
                             <option value="6" @if ($baseball->game_status == "6") selected @endif>6th Inning</option>
                             <option value="7" @if ($baseball->game_status == "7") selected @endif>7th Inning</option>
-                            <option value="7" @if ($baseball->game_status == "8") selected @endif>Extra Innings</option>
-                            <option value="7" @if ($baseball->game_status == "9") selected @endif>Final</option>
+                            <option value="8" @if ($baseball->game_status == "8") selected @endif>Extra Innings</option>
+                            <option value="9" @if ($baseball->game_status == "9") selected @endif>Final</option>
 
                           </select>
 
