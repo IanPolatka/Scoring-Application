@@ -286,6 +286,8 @@ Route::delete('/tennis-girls/{tennisgirls}', 'TennisgirlsController@delete');
 Route::get('/tennis-girls/{year}/{team}', 'TennisgirlsController@teamschedule');
 Route::get('/tennis-girls/{year}', 'TennisgirlsController@yearschedule');
 
+Route::get('/api/tennis-girls/schedule/{year}/{team}/{teamlevel}', 'TennisgirlsController@apiteamschedule');
+
 
 
 //  Football
