@@ -243,4 +243,44 @@ class TennisboysController extends Controller
 
     }
 
+
+
+    public function todaysevents($team)
+    {
+
+        $today = Carbon::today();
+
+        // return $today;
+
+        $theteam = Team::where('school_name', '=', $team)->pluck('id');
+
+        $tennis = Tennisboys::join('teams as home_team', 'tennis_boys.home_team_id', '=', 'home_team.id')
+                            ->join('teams as away_team', 'tennis_boys.away_team_id', '=', 'away_team.id')
+                            ->join('years', 'tennis_boys.year_id', '=', 'years.id')
+                            ->join('times', 'tennis_boys.time_id', '=', 'times.id')
+                            ->select(
+                                    'tennis_boys.id',
+                                    'tennis_boys.date',
+                                    'year',
+                                    'scrimmage',
+                                    'time',
+                                    'away_team.school_name as away_team',
+                                    'away_team.logo as away_team_logo',
+                                    'home_team.school_name as home_team',
+                                    'home_team.logo as home_team_logo',
+                                    'tennis_boys.team_level'
+                                )
+                            ->where('tennis_boys.team_level', '=', 1)
+                            ->where(function ($query) use ($theteam) {
+                                $query->where('away_team_id', '=' , $theteam)
+                                    ->orWhere('home_team_id', '=', $theteam);
+                            })
+                            ->where('date', '=', $today)
+                            ->orderBy('time')
+                            ->get();
+
+        return $tennis;
+
+    }
+
 }

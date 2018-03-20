@@ -254,8 +254,8 @@ class TennisgirlsController extends Controller
 
         $theteam = Team::where('school_name', '=', $team)->pluck('id');
 
-        $tennis = Tennisgirls::join('teams as home_team', 'bowling_boys.home_team_id', '=', 'home_team.id')
-                            ->join('teams as away_team', 'bowling_boys.away_team_id', '=', 'away_team.id')
+        $tennis = Tennisgirls::join('teams as home_team', 'tennis_girls.home_team_id', '=', 'home_team.id')
+                            ->join('teams as away_team', 'tennis_girls.away_team_id', '=', 'away_team.id')
                             ->join('years', 'tennis_girls.year_id', '=', 'years.id')
                             ->join('times', 'tennis_girls.time_id', '=', 'times.id')
                             ->select(
