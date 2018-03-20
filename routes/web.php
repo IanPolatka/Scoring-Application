@@ -97,6 +97,7 @@ Route::get('/baseball/{year}/{team}', 'BaseballController@teamschedule');
 Route::get('/baseball/{year}', 'BaseballController@yearschedule');
 
 Route::get('/api/baseball/schedule/{year}/{team}/{teamlevel}', 'BaseballController@apiteamschedule');
+Route::get('/api/baseball/todays-events/{team}', 'BaseballController@todaysevents');
 
 
 

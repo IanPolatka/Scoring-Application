@@ -304,5 +304,69 @@ class BaseballController extends Controller
 
 
 
+	public function todaysevents($team)
+	{
+
+		$today = Carbon::today();
+
+		// return $today;
+
+		$theteam = Team::where('school_name', '=', $team)->pluck('id');
+
+		$baseball = Baseball::join('teams as home_team', 'baseball.home_team_id', '=', 'home_team.id')
+							->join('teams as away_team', 'baseball.away_team_id', '=', 'away_team.id')
+							->join('years', 'baseball.year_id', '=', 'years.id')
+							->join('times', 'baseball.time_id', '=', 'times.id')
+							->select(
+									'baseball.id',
+									'baseball.date',
+									'year',
+									'scrimmage',
+									'time',
+									'baseball.tournament_title',
+									'away_team.school_name as away_team',
+									'away_team.logo as away_team_logo',
+									'away_team.mascot as away_team_mascot',
+									'baseball.away_team_first_inning_score',
+									'baseball.away_team_second_inning_score',
+									'baseball.away_team_third_inning_score',
+									'baseball.away_team_fourth_inning_score',
+									'baseball.away_team_fifth_inning_score',
+									'baseball.away_team_sixth_inning_score',
+									'baseball.away_team_seventh_inning_score',
+									'baseball.away_team_extra_inning_score',
+									'baseball.away_team_final_score',
+									'home_team.school_name as home_team',
+									'home_team.logo as home_team_logo',
+									'home_team.mascot as home_team_mascot',
+									'baseball.home_team_first_inning_score',
+									'baseball.home_team_second_inning_score',
+									'baseball.home_team_third_inning_score',
+									'baseball.home_team_fourth_inning_score',
+									'baseball.home_team_fifth_inning_score',
+									'baseball.home_team_sixth_inning_score',
+									'baseball.home_team_seventh_inning_score',
+									'baseball.home_team_extra_inning_score',
+									'baseball.home_team_final_score',
+									'baseball.game_status',
+									'baseball.winning_team',
+									'baseball.losing_team',
+									'baseball.team_level'
+								)
+							->where('baseball.team_level', '=', 1)
+							->where(function ($query) use ($theteam) {
+						        $query->where('away_team_id', '=' , $theteam)
+						            ->orWhere('home_team_id', '=', $theteam);
+						    })
+							->where('date', '=', $today)
+    						->orderBy('time')
+					    	->get();
+
+		return $baseball;
+
+	}
+
+
+
 
 }
