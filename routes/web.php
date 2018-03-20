@@ -267,6 +267,7 @@ Route::delete('/tennis-boys/{tennisboys}', 'TennisboysController@delete');
 Route::get('/tennis-boys/{year}/{team}', 'TennisboysController@teamschedule');
 Route::get('/tennis-boys/{year}', 'TennisboysController@yearschedule');
 
+Route::get('/api/tennis-boys/todays-events/{team}', 'TennisboysControllerController@todaysevents');
 Route::get('/api/tennis-boys/schedule/{year}/{team}/{teamlevel}', 'TennisboysController@apiteamschedule');
 
 
@@ -286,6 +287,7 @@ Route::delete('/tennis-girls/{tennisgirls}', 'TennisgirlsController@delete');
 Route::get('/tennis-girls/{year}/{team}', 'TennisgirlsController@teamschedule');
 Route::get('/tennis-girls/{year}', 'TennisgirlsController@yearschedule');
 
+Route::get('/api/tennis-girls/todays-events/{team}', 'TennisgirlsControllerController@todaysevents');
 Route::get('/api/tennis-girls/schedule/{year}/{team}/{teamlevel}', 'TennisgirlsController@apiteamschedule');
 
 
