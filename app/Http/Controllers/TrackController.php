@@ -12,6 +12,8 @@ use App\CurrentYear;
 use App\Team;
 use App\Time;
 
+use Session;
+
 class TrackController extends Controller
 {
 
@@ -85,7 +87,9 @@ class TrackController extends Controller
             'tournament_title'          =>  request('tournament_title'),
             'time_id'                   =>  request('time_id'),
             'boys_result'               =>  request('boys_result'),
-            'girls_result'              =>  request('girls_result')
+            'girls_result'              =>  request('girls_result'),
+            'host_id'                   =>  request('host_id'),
+            'meet_location'             =>  request('meet_location')
 
         ]);
 

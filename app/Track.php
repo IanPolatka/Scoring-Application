@@ -39,7 +39,9 @@ class Track extends Model
         'tournament_title',
         'time_id',
         'boys_result',
-        'girls_result'
+        'girls_result',
+        'host_id',
+        'meet_location'
 
     ];
 
