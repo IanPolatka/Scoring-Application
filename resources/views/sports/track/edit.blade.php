@@ -91,7 +91,7 @@
 
                             @foreach($teams as $team)
 
-                              <option value="{{ $team['id'] }}" @if ($crosscountry->host_id === $team->id) selected @endif > {{ $team['school_name'] }}</option>
+                              <option value="{{ $team['id'] }}" @if ($track->host_id === $team->id) selected @endif > {{ $team['school_name'] }}</option>
 
                             @endforeach
 
@@ -107,7 +107,7 @@
 
                         <div class="form-group">
                           <label for="meet_location">Location</label>
-                          <input type="text" class="form-control" id="meet_location" name="meet_location" value="{{ $crosscountry->meet_location }}">
+                          <input type="text" class="form-control" id="meet_location" name="meet_location" value="{{ $track->meet_location }}">
                         </div> 
                      
                      
