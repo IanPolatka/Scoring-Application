@@ -418,6 +418,8 @@ Route::delete('/track/{track}', 'TrackController@delete');
 Route::get('/track/{year}/{team}', 'TrackController@teamschedule');
 Route::get('/track/{year}', 'TrackController@yearschedule');
 
+Route::get('/api/track/schedule/{year}/{team}/{teamlevel}', 'TrackController@apiteamschedule');
+
 
 
 

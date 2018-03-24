@@ -14,6 +14,11 @@ use App\Time;
 
 class TrackController extends Controller
 {
+
+    public function __construct() 
+    {
+      $this->middleware('auth', ['only' => [ 'create', 'edit', 'delete' ]]);
+    }
     
 	public function index()
     {
@@ -194,6 +199,40 @@ class TrackController extends Controller
                             ->get();
 
         return view('sports.track.yearschedule', compact('track', 'selectedyear', 'selectedyearid', 'teams', 'year', 'years'));
+
+    }
+
+
+
+    public function apiteamschedule($year, $team, $teamlevel)
+    {
+
+        $theteam = Team::where('school_name', '=', $team)->pluck('id');
+
+        $track = Track::join('teams as host', 'track.host_id', '=', 'host.id')
+                                    ->join('teams as schedule_for','track.team_id', '=', 'schedule_for.id')
+                                    ->join('years', 'track.year_id', '=', 'years.id')
+                                    ->join('times', 'track.time_id', '=', 'times.id')
+                                    ->select(
+                                        'track.id',
+                                        'schedule_for.school_name as schedule_for',
+                                        'years.year',
+                                        'date',
+                                        'scrimmage',
+                                        'host.school_name as host_school',
+                                        'tournament_title',
+                                        'meet_location',
+                                        'host.logo as host_school_logo',
+                                        'times.time',
+                                        'boys_result',
+                                        'girls_result'
+                                    )
+                                    ->where('year', '=', $year)
+                                    ->where('team_id', '=', $theteam)
+                                    ->where('team_level', '=', $teamlevel)
+                                    ->get();
+
+        return $track;
 
     }
 
