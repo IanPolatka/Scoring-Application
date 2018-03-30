@@ -379,6 +379,7 @@ Route::get('/softball/{year}/{team}', 'SoftballController@teamschedule');
 Route::get('/softball/{year}', 'SoftballController@yearschedule');
 
 Route::get('/api/softball/record/{year}/{team}/{teamlevel}', 'SoftballController@apiteamschedule');
+Route::get('/api/softball/todays-events/{team}', 'SoftballController@todaysevents');
 
 
 
@@ -417,6 +418,8 @@ Route::delete('/track/{track}', 'TrackController@delete');
 
 Route::get('/track/{year}/{team}', 'TrackController@teamschedule');
 Route::get('/track/{year}', 'TrackController@yearschedule');
+
+Route::get('/api/track/schedule/{year}/{team}/{teamlevel}', 'TrackController@apiteamschedule');
 
 
 
