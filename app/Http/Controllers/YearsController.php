@@ -10,9 +10,9 @@ class YearsController extends Controller
 {
 
 	public function __construct() 
-	{
-	  $this->middleware('auth', ['except' => ['showall']]);
-	}
+    {
+      $this->middleware('auth', ['only' => [ 'create', 'edit', 'delete' ]]);
+    }
     
 	public function index()
 	{
@@ -94,6 +94,47 @@ class YearsController extends Controller
 		$year->delete();
 
 		return redirect('/years');
+
+	}
+
+
+
+
+	public function apishowall()
+	{
+
+		$years = Year::orderBy('year', 'asc')->get();;
+
+		return $years;
+
+	}
+
+	public function apishow($id)
+	{
+
+		$year = Year::find($id);
+
+		return $year;
+
+	}
+
+	public function apistore(Year $year)
+	{
+
+		Year::create(request(['year']));
+
+
+		return redirect('/years');
+
+	}
+
+
+
+	public function apiupdate(Request $request, Year $year)
+	{
+
+		$year->update($request->all());
+		return response()->json($year, 200);
 
 	}
 

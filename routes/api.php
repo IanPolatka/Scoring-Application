@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/years', 'YearsController@apishowall');
+Route::get('/years/{id}', 'YearsController@apishow');
+Route::post('/years', 'YearsController@apistore');
+Route::put('/years/{year}', 'YearsController@apiupdate');
