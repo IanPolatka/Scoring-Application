@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/years', 'YearsController@apishowall');
 Route::get('/years/{id}', 'YearsController@apishow');
 Route::post('/years', 'YearsController@apistore');
-Route::put('/years/{year}', 'YearsController@apiupdate');
+Route::post('/years/{year}', 'YearsController@apiupdate');
