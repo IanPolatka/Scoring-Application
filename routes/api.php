@@ -21,3 +21,31 @@ Route::get('/years', 'YearsController@apishowall');
 Route::get('/years/{id}', 'YearsController@apishow');
 Route::post('/years', 'YearsController@apistore');
 Route::post('/years/{year}', 'YearsController@apiupdate');
+
+
+
+/*
+|
+|--------------------------------------------------------------------------
+| Baseball Routes
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::get('/baseball/game/{id}', 'BaseballController@apigame');
+
+
+
+
+
+
+
+/*
+|
+|--------------------------------------------------------------------------
+| Softball Routes
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::get('/softball/game/{id}', 'SoftballController@apigame');
