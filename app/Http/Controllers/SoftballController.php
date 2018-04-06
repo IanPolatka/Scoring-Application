@@ -196,12 +196,24 @@ class SoftballController extends Controller
 						    })
 						    ->orderBy('date')
 							->get();
+		//  Display schedule for team based on selected year
+		$freshsoftball = Softball::join('years', 'softball.year_id', 'years.id')
+							->select('softball.*')
+							->where('year_id', '=', $selectedyearid)
+							->where('team_level', '=', 3)
+							->where(function ($query) use ($selectedteamid) {
+						        $query->where('away_team_id', '=' , $selectedteamid)
+						            ->orWhere('home_team_id', '=', $selectedteamid);
+						    })
+						    ->orderBy('date')
+							->get();
 
 		$region 		= Team::where('school_name', $team)->pluck('region_softball');
 		$standings		= Team::where('region_softball', $region)->orderBy('school_name')->get();
 
 		return view('sports.softball.teamschedule', compact('softball',
 															'jvsoftball', 
+								    							'freshsoftball',
 															'selectedteam',
 															'selectedteamid',
 															'selectedyear',
