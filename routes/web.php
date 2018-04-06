@@ -378,7 +378,7 @@ Route::delete('/softball/game/{id}', 'SoftballController@delete');
 Route::get('/softball/{year}/{team}', 'SoftballController@teamschedule');
 Route::get('/softball/{year}', 'SoftballController@yearschedule');
 
-Route::get('/api/softball/record/{year}/{team}/{teamlevel}', 'SoftballController@apiteamschedule');
+Route::get('/api/softball/schedule/{year}/{team}/{teamlevel}', 'SoftballController@apiteamschedule');
 Route::get('/api/softball/todays-events/{team}', 'SoftballController@todaysevents');
 
 
