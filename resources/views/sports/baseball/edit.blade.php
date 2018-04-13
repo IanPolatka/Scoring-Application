@@ -25,17 +25,17 @@
     $awayFourth = 0;
   endif;
   if (isset($baseball->away_team_fifth_inning_score)) :
-    $awayFourth = $baseball->away_team_fifth_inning_score;
+    $awayFifth = $baseball->away_team_fifth_inning_score;
   else:
     $awayFifth = 0;
   endif;
   if (isset($baseball->away_team_sixth_inning_score)) :
-    $awayFourth = $baseball->away_team_sixth_inning_score;
+    $awaySixth = $baseball->away_team_sixth_inning_score;
   else:
     $awaySixth = 0;
   endif;
   if (isset($baseball->away_team_seventh_inning_score)) :
-    $awayFourth = $baseball->away_team_seventh_inning_score;
+    $awaySeventh = $baseball->away_team_seventh_inning_score;
   else:
     $awaySeventh = 0;
   endif;
