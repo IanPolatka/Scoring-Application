@@ -465,7 +465,7 @@
 
                           <label for="home_team_first_inning_score">{{ $baseball->home_team->school_name }} {{ $baseball->home_team->mascot }} First Inning Score</label>
 
-                          <select name="home_team_first_qrt_score" id="home_team_first_inning_score" class="form-control">
+                          <select name="home_team_first_inning_score" id="home_team_first_inning_score" class="form-control">
                               <option value="">Enter Score</option>
                               @for ($i = 0; $i < 99; $i++) 
                                 <option value="{{ $i }}" @if ($baseball->home_team_first_inning_score == "$i") selected @endif>{{ $i }}</option>
@@ -478,7 +478,7 @@
 
                           <label for="home_team_second_inning_score">{{ $baseball->home_team->school_name }} {{ $baseball->home_team->mascot }} Second Inning Score</label>
 
-                          <select name="home_team_second_qrt_score" id="home_team_second_inning_score" class="form-control">
+                          <select name="home_team_second_inning_score" id="home_team_second_inning_score" class="form-control">
                               <option value="">Enter Score</option>
                               @for ($i = 0; $i < 99; $i++) 
                                 <option value="{{ $i }}" @if ($baseball->home_team_second_inning_score == "$i") selected @endif>{{ $i }}</option>
@@ -489,7 +489,7 @@
 
                         <div class="form-group">
 
-                          <label for="home_team_third_qrt_score">{{ $baseball->home_team->school_name }} {{ $baseball->home_team->mascot }} Third Inning Score</label>
+                          <label for="home_team_third_inning_score">{{ $baseball->home_team->school_name }} {{ $baseball->home_team->mascot }} Third Inning Score</label>
 
                           <select name="home_team_third_inning_score" id="home_team_third_inning_score" class="form-control">
                               <option value="">Enter Score</option>
