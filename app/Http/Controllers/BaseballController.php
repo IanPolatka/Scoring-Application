@@ -177,6 +177,7 @@ class BaseballController extends Controller
 		$baseball = Baseball::join('years', 'baseball.year_id', 'years.id')
 							->select('baseball.*')
 							->where('year_id', '=', $selectedyearid)
+							->where('team_level', '=', 1)
 							->where(function ($query) use ($selectedteamid) {
 						        $query->where('away_team_id', '=' , $selectedteamid)
 						            ->orWhere('home_team_id', '=', $selectedteamid);
@@ -185,7 +186,7 @@ class BaseballController extends Controller
 							->get();
 
 		//  Display schedule for team based on selected year
-		$jvbaseball = Baseball::join('years', 'softball.year_id', 'years.id')
+		$jvbaseball = Baseball::join('years', 'baseball.year_id', 'years.id')
 							->select('baseball.*')
 							->where('year_id', '=', $selectedyearid)
 							->where('team_level', '=', 2)
@@ -196,7 +197,7 @@ class BaseballController extends Controller
 						    ->orderBy('date')
 							->get();
 		//  Display schedule for team based on selected year
-		$freshbaseball = Baseball::join('years', 'softball.year_id', 'years.id')
+		$freshbaseball = Baseball::join('years', 'baseball.year_id', 'years.id')
 							->select('baseball.*')
 							->where('year_id', '=', $selectedyearid)
 							->where('team_level', '=', 3)
