@@ -184,10 +184,35 @@ class BaseballController extends Controller
 						    ->orderBy('date')
 							->get();
 
+		//  Display schedule for team based on selected year
+		$jvbaseball = Baseball::join('years', 'softball.year_id', 'years.id')
+							->select('baseball.*')
+							->where('year_id', '=', $selectedyearid)
+							->where('team_level', '=', 2)
+							->where(function ($query) use ($selectedteamid) {
+						        $query->where('away_team_id', '=' , $selectedteamid)
+						            ->orWhere('home_team_id', '=', $selectedteamid);
+						    })
+						    ->orderBy('date')
+							->get();
+		//  Display schedule for team based on selected year
+		$freshbaseball = Baseball::join('years', 'softball.year_id', 'years.id')
+							->select('baseball.*')
+							->where('year_id', '=', $selectedyearid)
+							->where('team_level', '=', 3)
+							->where(function ($query) use ($selectedteamid) {
+						        $query->where('away_team_id', '=' , $selectedteamid)
+						            ->orWhere('home_team_id', '=', $selectedteamid);
+						    })
+						    ->orderBy('date')
+							->get();
+
 		$region 		= Team::where('school_name', $team)->pluck('region_baseball');
 		$standings		= Team::where('region_baseball', $region)->orderBy('school_name')->get();
 
-		return view('sports.baseball.teamschedule', compact('baseball', 
+		return view('sports.baseball.teamschedule', compact('baseball',
+															'jvbaseball',
+															'freshbaseball', 
 															'selectedteam',
 															'selectedteamid',
 															'selectedyear',
