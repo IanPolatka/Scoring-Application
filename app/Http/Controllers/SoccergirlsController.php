@@ -20,9 +20,9 @@ class SoccergirlsController extends Controller
 {
 
 	public function __construct() 
-	{
-	  $this->middleware('auth', ['except' => ['index', 'show', 'teamschedule', 'yearschedule', 'apiteamschedule', 'apiteamschedulesummary', 'apigame', 'todaysevents', 'districtstandings', 'yearsummary' ]]);
-	}
+    {
+      $this->middleware('auth', ['only' => [ 'create', 'edit', 'delete' ]]);
+    }
     
 	public function index()
 	{

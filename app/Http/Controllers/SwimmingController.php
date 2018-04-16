@@ -14,6 +14,11 @@ use App\Time;
 
 class SwimmingController extends Controller
 {
+
+    public function __construct() 
+    {
+      $this->middleware('auth', ['only' => [ 'create', 'edit', 'delete' ]]);
+    }
     
 	public function index()
     {

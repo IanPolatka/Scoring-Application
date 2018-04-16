@@ -15,6 +15,11 @@ use App\Time;
 class BowlingboysController extends Controller
 {
 
+    public function __construct() 
+    {
+      $this->middleware('auth', ['only' => [ 'create', 'edit', 'delete' ]]);
+    }
+
 	public function index()
     {
 

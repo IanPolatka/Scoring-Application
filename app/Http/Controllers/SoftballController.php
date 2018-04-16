@@ -19,6 +19,11 @@ use Session;
 class SoftballController extends Controller
 {
 
+	public function __construct() 
+    {
+      $this->middleware('auth', ['only' => [ 'create', 'edit', 'delete' ]]);
+    }
+
 	public function index()
 	{
 
