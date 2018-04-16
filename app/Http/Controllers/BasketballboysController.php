@@ -63,7 +63,7 @@ class BasketballboysController extends Controller
 	{
 
 		//  Display the current year
-		$thecurrentyear	= CurrentYear::find(1)->pluck('year_id');
+		$thecurrentyear	= CurrentYear::first()->pluck('year_id');
 
 		$displayyear = Year::find($thecurrentyear);
 

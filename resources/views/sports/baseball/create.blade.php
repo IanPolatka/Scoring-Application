@@ -20,13 +20,12 @@
 
                             <option value="">Select A School Year</option>
 
-                            <option value="{{ $thecurrentyear[0] }}">{{ $displayyear->year }} (the current school year)</option>
-
+                            <option value="{{ $displayyear[0]['id'] }}">{{ $displayyear[0]['year'] }} (the current school year)</option>
                             <option value="">---------------------</option>
 
                             @foreach($years as $year)
 
-                              <option value="{{ $year->id }}" >
+                              <option value="" >
                                   {{ $year->year }}
                               </option>
 
