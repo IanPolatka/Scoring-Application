@@ -458,4 +458,60 @@ class SoftballController extends Controller
 	}
 
 
+
+	public function yearsummary($year, $team)
+	{
+
+		// return $year;
+		$selectedyear = Year::where('year', $year)->pluck('year');
+		$selectedyearid = Year::where('year', $year)->pluck('id');
+
+		$selectedteam = Team::where('school_name', $team)->get();
+		$selectedteamid	=	Team::where('school_name', $team)->pluck('id');
+		$selectedRegion = Team::where('school_name', $team)->pluck('region_softball');
+		$selectedDistrict = Team::where('school_name', $team)->pluck('district_softball');
+
+		// return $selectedteam;
+
+		$the_standings = \DB::select('SELECT
+ 							school_name AS Team, logo, district_softball, region_softball, Sum(W) AS Wins, Sum(L) AS Losses, SUM(F) as F,SUM(A) AS A, SUM(DW) AS DistrictWins, SUM(DL) AS DistrictLoses
+						FROM(
+
+							SELECT
+							    home_team_id Team,
+							    IF(home_team_final_score > away_team_final_score,1,0) W,
+							    IF(home_team_final_score < away_team_final_score,1,0) L,
+							    home_team_final_score F,
+							    away_team_final_score A,
+							    IF(district_game = 1 && home_team_final_score > away_team_final_score,1,0) DW,
+							    IF(district_game = 1 && home_team_final_score < away_team_final_score,1,0) DL
+							    
+							FROM softball
+							WHERE year_id = ? AND team_level = 1
+
+							UNION ALL
+							  SELECT
+							    away_team_id,
+							    IF(home_team_final_score < away_team_final_score,1,0),
+							    IF(home_team_final_score > away_team_final_score,1,0),
+							    away_team_final_score,
+							    home_team_final_score,
+							    IF(district_game = 1 && home_team_final_score < away_team_final_score,1,0),
+							    IF(district_game = 1 && home_team_final_score > away_team_final_score,1,0)
+							   
+							FROM softball
+							WHERE year_id = ? AND team_level = 1
+							  
+						)
+						as tot
+						JOIN teams t ON tot.Team=t.id
+						WHERE district_softball = ? AND region_softball = ? AND school_name = ?
+						GROUP BY Team
+						ORDER BY DistrictWins DESC, DistrictLoses ASC, wins DESC, losses ASC, school_name', array($selectedyearid[0], $selectedyearid[0], $selectedDistrict[0], $selectedRegion[0], $selectedteam[0]['school_name']));
+
+		return $the_standings;
+
+	}
+
+
 }

@@ -33,6 +33,7 @@ Route::post('/years/{year}', 'YearsController@apiupdate');
 */
 
 Route::get('/baseball/game/{id}', 'BaseballController@apigame');
+Route::get('/baseball/record/{year}/{team}', 'BaseballController@yearsummary');
 
 
 
@@ -49,3 +50,4 @@ Route::get('/baseball/game/{id}', 'BaseballController@apigame');
 */
 
 Route::get('/softball/game/{id}', 'SoftballController@apigame');
+Route::get('/softball/record/{year}/{team}', 'SoftballController@yearsummary');
