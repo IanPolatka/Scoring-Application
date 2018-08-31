@@ -759,8 +759,8 @@ class VolleyballController extends Controller
 							    away_team_id,
 							    IF(home_team_id = winning_team,1,0),
 							    IF(home_team_id = losing_team,1,0),
-							    IF(district_game = 1 && home_team_id = winning_team,1,0),
-							    IF(district_game = 1 && home_team_id = losing_team,1,0)
+							    IF(district_game = 1 && away_team_id = winning_team,1,0),
+							    IF(district_game = 1 && away_team_id = losing_team,1,0)
 							   
 							FROM volleyball
 							WHERE year_id = ? AND team_level = 1
